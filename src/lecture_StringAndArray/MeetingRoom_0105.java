@@ -3,6 +3,18 @@ package lecture_StringAndArray;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/*
+회의실 겹치지 않게 빌리기
+
+input : [[0,30],[5,10],[15,20]]
+output : false
+
+input : [[7,10],[2,4]]
+output : true
+
+*/
+
+// input을 담을 클래스
 class Interval{
 	int start;
 	int end;
@@ -17,22 +29,12 @@ class Interval{
 }
 
 public class MeetingRoom_0105 {
-	/*
-	 회의실 겹치지 않게 빌리기
-	
-	input : [[0,30],[5,10],[15,20]]
-	output : false
-	
-	input : [[7,10],[2,4]]
-	output : true
-	
-	*/
 	
 	public boolean solve(Interval[] intervals){
 		//1. 입력값이 null인지 확인하기
 		if(intervals==null) return false;
 		
-		//2. start를 기춘으로 intervals 정렬하기
+		//2. start를 기준으로 intervals 정렬하기
 		Arrays.sort(intervals,Comp);
 		
 		//3. start기준으로 정렬되었으니 앞의 end와 뒤의 start만 비교하면 됨
