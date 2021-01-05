@@ -1,5 +1,6 @@
 package lecture_StringAndArray;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 class Interval{
@@ -27,6 +28,22 @@ public class MeetingRoom_0105 {
 	
 	*/
 	
+	public boolean solve(Interval[] intervals){
+		//1. 입력값이 null인지 확인하기
+		if(intervals==null) return false;
+		
+		//2. start를 기춘으로 intervals 정렬하기
+		Arrays.sort(intervals,Comp);
+		
+		//3. start기준으로 정렬되었으니 앞의 end와 뒤의 start만 비교하면 됨
+		for (int i=1;i<intervals.length;i++){
+			if(intervals[i-1].end>intervals[i].start) return false;
+		}
+		
+		//4. 반복문이 return 없이 끝났다면 조건 충족.
+		return true;
+	}
+	
 	
 	public void print(Interval[] intervals) {
 		for(int i=0; i<intervals.length; i++) {
@@ -35,11 +52,12 @@ public class MeetingRoom_0105 {
 			
 		}
 	}
+	
 	Comparator<Interval> Comp = new Comparator<Interval>() {
 
 		@Override
 		public int compare(Interval a, Interval b) {
-			// TODO Auto-generated method stub
+			// start를 기준으로 오름차순이 될 수 있도록 a에서 b빼기
 			return a.start - b.start;
 		}
 		
@@ -54,6 +72,6 @@ public class MeetingRoom_0105 {
 		Interval in3 = new Interval(0,30);
 		
 		Interval[] intervals = {in1, in2,in3};
-		//System.out.println(a.solve(intervals));
+		System.out.println(a.solve(intervals));
 	}
 }
