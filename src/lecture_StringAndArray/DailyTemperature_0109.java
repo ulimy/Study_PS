@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class DailyTemperature_0109 {
 	
-	/*자신보다 더 큰 온도가 나올 떄 까지 얼마나 걸렸는가를 반환
+	/*자신보다 더 큰 온도가 나올 때 까지 얼마나 걸렸는가를 반환
 	 
 	 input : int[] nums ={73, 74, 75, 71, 69, 72, 76, 73}
 	 output : [1, 1, 4, 2, 1, 1, 0, 0]
