@@ -12,3 +12,4 @@
  - [MergeInterval](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/MergeInterval_0109.java)
  - [MeetingRoom2](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/MeetingRoom2_0109.java)
  - [JewelsAndStones](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/JewelsAndStones_0110.java)
+ - [LicenseKeyFormatting](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/LicenseKeyFormatting_0110.java)
