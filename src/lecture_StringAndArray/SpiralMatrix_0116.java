@@ -1,5 +1,6 @@
 package lecture_StringAndArray;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpiralMatrix_0116 {
@@ -12,7 +13,47 @@ public class SpiralMatrix_0116 {
 	 */
 	
 	public List<Integer> solve(int[][] matrix){
-		return null;
+		
+		List<Integer> result = new ArrayList<>();
+		
+		// 비어있는지 확인
+		if(matrix==null||matrix.length==0) return result;
+ 		
+		// 시작과 끝 미리 선언
+		int rowstart=0;
+		int rowend = matrix.length-1;
+		int colstart=0;
+		int colend=matrix[0].length-1;
+		
+		while(rowstart<=rowend && colstart<=colend){
+			
+			// 오른쪽으로 colstart부터 end까지
+			for (int i=colstart;i<=colend;i++){
+				result.add(matrix[rowstart][i]);
+			}
+			rowstart++;
+			
+			// 아래로 rowstart부터 end까지
+			for (int i=rowstart;i<=rowend;i++){
+				result.add(matrix[i][colend]);
+			}
+			colend--;
+			
+			// 왼쪽으로  colend부터 start까지
+			for (int i=colend;i>=colstart;i--){
+				result.add(matrix[rowend][i]);
+			}
+			rowend--;
+			
+			// 위로 rowend부터 start까지
+			for (int i=rowend;i>=rowstart;i--){
+				result.add(matrix[i][colstart]);
+			}
+			colstart++;
+			
+		}
+		
+		return result;
 	}
 
 	public static void main(String[] args) {
