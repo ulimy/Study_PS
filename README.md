@@ -23,3 +23,4 @@
  - [SpiralMatrix](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/SpiralMatrix_0116.java)
  - [GroupAnagrams](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/GroupAnagrams_0116.java)
  - [TrappingRainWater](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/TrappingRainWater_0123.java)
+ - [KthLargestElementInAnArray](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/KthLargestElementInAnArray_0123.java)
