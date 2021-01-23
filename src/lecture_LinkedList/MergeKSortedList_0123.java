@@ -1,11 +1,48 @@
 package lecture_LinkedList;
 
+import java.util.PriorityQueue;
+
 public class MergeKSortedList_0123 {
 
-	// 여러개의 연결리스트 형태의 노트를 합쳐 정렬하기
+	/* 여러개의 연결리스트 형태의 노트를 합쳐 정렬하기
+	 
+	 Priority Queue 이용하기!
+	 
+	 */
 	
 	public ListNode solve(ListNode[] list){
-		return null;
+		// 오름차순 Priority Queue 만들기
+		PriorityQueue<ListNode> pq = new PriorityQueue<>((a,b)->a.val-b.val);
+		
+		// 시작노드 임의로 0을 넣어 만들기
+		ListNode newHead = new ListNode(0); 
+		// 데이터 조작 방지를 위해 복사하여 사용
+		ListNode p = newHead;
+		
+		// list 안에 들어있는 노드들 큐에 넣기
+		for (ListNode node : list){
+			if(node!=null){
+				pq.offer(node);
+			}
+		}
+		
+		// 비어있지 않다면
+		while(!pq.isEmpty()){
+			// pq에 있는 노트 뽑아서
+			ListNode node = pq.poll();
+			// 결과를 담을 p에 추가
+			p.next = node;
+			// 다음 추가를 위해 뒤로 이동
+			p = p.next;
+			
+			// 다음 노드를 pq에 추가
+			if(node.next!=null){
+				pq.offer(node.next);
+			}
+		}
+		
+		// 맨 처음은 더미로 0 넣었으므로 그 다음 노드 리턴
+		return newHead.next;
 	}
 	
 	public static void main(String[] args) {
