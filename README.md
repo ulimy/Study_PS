@@ -28,3 +28,4 @@
 
 2. Linked list
  - [AddTwoNumbers](https://github.com/ulimy/Study_PS/blob/master/src/lecture_LinkedList/AddTwoNumbers_0123.java)
+ - [MergeKSortedList](https://github.com/ulimy/Study_PS/blob/master/src/lecture_LinkedList/MergeKSortedList_0123.java)
