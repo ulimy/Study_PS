@@ -40,3 +40,4 @@
  - [NumberOfIsland_DFS](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/NumberOfIsland_DFS_0126.java)
  - [NumberOfIsland_BFS](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/NumberOfIsland_BFS_0126.java)
  - [MaximumDepthOfBinaryTree](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/MaximumDepthOfBinaryTree_0126.java)
+ - [MaximumDepthOfBinaryTree_DFS](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/MaximumDepthOfBinaryTree_DFS_0126.java)
