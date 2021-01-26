@@ -35,3 +35,6 @@
  - [BaseballGame](https://github.com/ulimy/Study_PS/blob/master/src/lecture_QueueAndStack/BaseballGame_0123.java)
  - [ValidParentheses](https://github.com/ulimy/Study_PS/blob/master/src/lecture_QueueAndStack/ValidParentheses_0123.java)
  - [BinaryTreeLevelOrder](https://github.com/ulimy/Study_PS/blob/master/src/lecture_QueueAndStack/BinaryTreeLevelOrder_0123.java)
+
+4. Graph (DFS & BFS)
+ - [NumberOfIsland_DFS](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/NumberOfIsland_DFS_0126.java)
