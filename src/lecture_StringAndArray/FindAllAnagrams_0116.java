@@ -20,7 +20,7 @@ public class FindAllAnagrams_0116 {
 	
 	// 몇개를 돌려줄 지 모르니 배열 대신 List 이용
 	public List<Integer> solve(String txt, String pat){
-		List<Integer> result = new ArrayList();
+		List<Integer> result = new ArrayList<>();
 		
 		// 비어있거나, pat가 더 길다면 빈 채로 return
 		if(txt==null || txt.length()==0 || pat==null || pat.length()==0 || txt.length()<pat.length()){
