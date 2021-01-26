@@ -45,3 +45,4 @@
  - [MaxOfIsland](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/MaxOfIsland_0126.java)
  - [WordLadder](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/WordLadder_0126.java)
  - [WordSearch](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/WordSearch_0126.java)
+ - [RemoveInvalidParentheses](https://github.com/ulimy/Study_PS/blob/master/src/lecture_Graph/RemoveInvalidParentheses_0126.java)
