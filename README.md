@@ -57,5 +57,5 @@
  - [LongestIncreasingSubsequence](https://github.com/ulimy/Study_PS/blob/master/src/lecture_DynamicProgramming/LongestIncreasingSubsequence_0204.java)
 
 6. BackTracking
- - [GenerateParentheses_0204](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/GenerateParentheses_0204.java)
+ - [GenerateParentheses](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/GenerateParentheses_0204.java)
  - [Permutation](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/Permutation_0204.java)
