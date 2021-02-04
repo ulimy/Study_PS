@@ -58,3 +58,4 @@
 
 6. BackTracking
  - [GenerateParentheses_0204](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/GenerateParentheses_0204.java)
+ - [Permutation](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/Permutation_0204.java)
