@@ -53,4 +53,4 @@
 5. Dynamic Programming 
  - [UinquePath](https://github.com/ulimy/Study_PS/blob/master/src/lecture_DynamicProgramming/UinquePath_0129.java)
  - [CoinChange](https://github.com/ulimy/Study_PS/blob/master/src/lecture_DynamicProgramming/CoinChange_0129.java)
- - [ClimbingStairs_0203](https://github.com/ulimy/Study_PS/blob/master/src/lecture_DynamicProgramming/ClimbingStairs_0203.java)
+ - [ClimbingStairs](https://github.com/ulimy/Study_PS/blob/master/src/lecture_DynamicProgramming/ClimbingStairs_0203.java)
