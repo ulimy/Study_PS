@@ -24,6 +24,7 @@ public class Subsets_0204 {
 		lists.add(list);
 		
 		for(int i=start;i<nums.length;i++){
+			
 			cur.add(nums[i]);
 			dfs(nums,lists,cur,i+1);
 			
