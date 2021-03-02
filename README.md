@@ -66,4 +66,6 @@
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
 
  1. DynamicProgramming
-  - [1로 만들기](https://www.acmicpc.net/problem/1463)
+  - 1로 만들기
+  	* [problem]{https://www.acmicpc.net/problem/1463
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1463.java) 
