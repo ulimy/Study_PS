@@ -69,3 +69,8 @@
   - 1로 만들기
   	* [problem](https://www.acmicpc.net/problem/1463)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1463.java) 
+  - 2Xn 타일링
+  	* [problem](https://www.acmicpc.net/problem/11726)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11726.java) 
+  
+
