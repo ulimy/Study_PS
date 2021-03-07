@@ -81,3 +81,6 @@
   - 쉬운 계단 수
   	* [problem](https://www.acmicpc.net/problem/10844)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_10844.java) 
+  - 오르막 수
+  	* [problem](https://www.acmicpc.net/problem/11057)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11057.java) 
