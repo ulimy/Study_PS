@@ -84,3 +84,6 @@
   - 오르막 수
   	* [problem](https://www.acmicpc.net/problem/11057)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11057.java) 
+  - 이친수
+  	* [problem](https://www.acmicpc.net/problem/2193)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2193.java) 
