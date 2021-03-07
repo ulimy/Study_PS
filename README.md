@@ -78,3 +78,6 @@
   - 1,2,3 더하기
   	* [problem](https://www.acmicpc.net/problem/9095)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_9095.java) 
+  - 쉬운 계단 수
+  	* [problem](https://www.acmicpc.net/problem/10844)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_10844.java) 
