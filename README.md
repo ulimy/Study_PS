@@ -75,4 +75,6 @@
   - 2Xn 타일링 2
   	* [problem](https://www.acmicpc.net/problem/11727)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11727.java) 
-
+  - 1,2,3 더하기
+  	* [problem](https://www.acmicpc.net/problem/9095)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_9095.java) 
