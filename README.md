@@ -87,3 +87,6 @@
   - 이친수
   	* [problem](https://www.acmicpc.net/problem/2193)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2193.java) 
+  - 스티커
+  	* [problem](https://www.acmicpc.net/problem/9465)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_9465.java) 
