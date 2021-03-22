@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class boj_11055 {
+	
+	//수열 A가 주어졌을 때, 그 수열의 증가 부분 수열 중에서 합이 가장 큰 것을 구하는 프로그램을 작성하시오.
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
