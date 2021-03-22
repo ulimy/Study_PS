@@ -114,3 +114,6 @@
   - 제곱수의 합
     * [problem](https://www.acmicpc.net/problem/1699)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1699.java) 
+  - 타일 채우기
+    * [problem](https://www.acmicpc.net/problem/2133)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2133.java) 
