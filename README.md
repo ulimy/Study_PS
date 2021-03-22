@@ -108,3 +108,6 @@
   - 연속합
     * [problem](https://www.acmicpc.net/problem/1912)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1912.java) 
+  - 계단 오르기
+    * [problem](https://www.acmicpc.net/problem/2579)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2579.java) 
