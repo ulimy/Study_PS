@@ -111,3 +111,6 @@
   - 계단 오르기
     * [problem](https://www.acmicpc.net/problem/2579)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2579.java) 
+  - 제곱수의 합
+    * [problem](https://www.acmicpc.net/problem/1699)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1699.java) 
