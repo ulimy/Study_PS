@@ -90,3 +90,6 @@
   - 스티커
   	* [problem](https://www.acmicpc.net/problem/9465)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_9465.java) 
+  - 포도주 시식
+  	* [problem](https://www.acmicpc.net/problem/2156)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2156.java) 
