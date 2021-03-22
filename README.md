@@ -105,3 +105,6 @@
   - 가장 긴 바이토닉 부분 수열
     * [problem](https://www.acmicpc.net/problem/11054)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11054.java)  
+  - 연속합
+    * [problem](https://www.acmicpc.net/problem/1912)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1912.java) 
