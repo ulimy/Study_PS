@@ -99,3 +99,6 @@
   - 가장 큰 증가하는 부분 수열
     * [problem](https://www.acmicpc.net/problem/11055)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11055.java)  
+  - 가장 긴 감소하는 부분 수열
+    * [problem](https://www.acmicpc.net/problem/11722)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11722.java)  
