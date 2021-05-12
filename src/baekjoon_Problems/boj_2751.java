@@ -20,6 +20,8 @@ public class boj_2751 {
 		
 		sc.close();
 		
+		// Arrays.sort는 최악의 경우 O(n^2)가 나올 수 있음
+		// Collections.sort의 경우는 최악의 경우에도 O(nlogn)을 보장함
 		Collections.sort(list);
 		
 		StringBuilder result = new StringBuilder();
