@@ -117,3 +117,8 @@
   - 타일 채우기
     * [problem](https://www.acmicpc.net/problem/2133)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2133.java) 
+    
+ 2. Problems
+  - 수 정렬하기 2
+    * [problem](https://www.acmicpc.net/problem/2751)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_2751.java) 
