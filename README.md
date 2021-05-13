@@ -128,4 +128,7 @@
   - 좌표 정렬하기 2
     * [problem](https://www.acmicpc.net/problem/11651)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_11651.java) 
+  - 나이순 정렬
+    * [problem](https://www.acmicpc.net/problem/10814)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10814.java) 
     
