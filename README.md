@@ -131,4 +131,7 @@
   - 나이순 정렬
     * [problem](https://www.acmicpc.net/problem/10814)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10814.java) 
+  - 국영수 
+    * [problem](https://www.acmicpc.net/problem/10825)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10825.java) 
     
