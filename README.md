@@ -124,5 +124,8 @@
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_2751.java) 
   - 좌표 정렬하기 
     * [problem](https://www.acmicpc.net/problem/11650)
-    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_11650.java) 
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_11650.java)
+  - 좌표 정렬하기 2
+    * [problem](https://www.acmicpc.net/problem/11651)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_11651.java) 
     
