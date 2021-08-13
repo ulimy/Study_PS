@@ -63,6 +63,13 @@
  - [LetterCombinationsOfPhonenumber](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/LetterCombinationsOfPhonenumber_0204.java)
 
  ---
+ ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
+
+ 1. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)
+
+ 1. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)
+
+ ---
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
 
  1. DynamicProgramming
@@ -117,3 +124,4 @@
   - 타일 채우기
     * [problem](https://www.acmicpc.net/problem/2133)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2133.java) 
+
