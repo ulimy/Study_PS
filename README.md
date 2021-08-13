@@ -124,4 +124,25 @@
   - 타일 채우기
     * [problem](https://www.acmicpc.net/problem/2133)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2133.java) 
+<<<<<<< HEAD
 
+=======
+    
+ 2. Problems
+  - 수 정렬하기 2
+    * [problem](https://www.acmicpc.net/problem/2751)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_2751.java) 
+  - 좌표 정렬하기 
+    * [problem](https://www.acmicpc.net/problem/11650)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_11650.java)
+  - 좌표 정렬하기 2
+    * [problem](https://www.acmicpc.net/problem/11651)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_11651.java) 
+  - 나이순 정렬
+    * [problem](https://www.acmicpc.net/problem/10814)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10814.java) 
+  - 국영수 
+    * [problem](https://www.acmicpc.net/problem/10825)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10825.java) 
+    
+>>>>>>> 4b7537f749c65aba78d8fd0058824bbd2671854a
