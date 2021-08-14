@@ -68,6 +68,7 @@
  1. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)
  2. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)
  3. [for문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step3.java)
+ 4. [while문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step4.java)
 
  ---
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
