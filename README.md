@@ -66,8 +66,8 @@
  ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
 
  1. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)
-
- 1. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)
+ 2. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)
+ 3. [for문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step3.java)
 
  ---
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
@@ -124,7 +124,6 @@
   - 타일 채우기
     * [problem](https://www.acmicpc.net/problem/2133)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2133.java) 
-<<<<<<< HEAD
 
 =======
     
@@ -145,4 +144,4 @@
     * [problem](https://www.acmicpc.net/problem/10825)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10825.java) 
     
->>>>>>> 4b7537f749c65aba78d8fd0058824bbd2671854a
+
