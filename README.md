@@ -71,6 +71,7 @@
  4. [while문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step4	.java)
  5. [1차원 배열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step5.java)
  6. [함수](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step6.java)
+ 7. [문자열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step7.java)
 
  ---
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
