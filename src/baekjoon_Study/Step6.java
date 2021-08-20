@@ -2,7 +2,7 @@ package baekjoon_Study;
 
 import java.util.Scanner;
 
-//ÇÔ¼ö
+//í•¨ìˆ˜
 public class Step6 {
 	
 	public static long sum(int[] a){
@@ -46,7 +46,7 @@ public class Step6 {
 	public static int solve(int N){
 		if(N<100) return N;
 		else{
-			// 1~99 ÇÒÇÊ¿ä¾øÀ½
+			// 1~99 ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½
 			int count=99;
 			
 			for(int i=100;i<=N;i++){

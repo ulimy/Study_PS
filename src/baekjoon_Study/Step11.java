@@ -3,7 +3,7 @@ package baekjoon_Study;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//ºê·çÆ® Æ÷½º
+//ë¸Œë£¨íŠ¸í¬ìŠ¤
 public class Step11 {
 	
 	public static void p_2798(){

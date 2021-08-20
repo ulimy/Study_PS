@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 
-// ¹®ÀÚ¿­
+// ë¬¸ìì—´
 public class Step7 {
 	
 	public static void q_11654(){
@@ -75,7 +75,7 @@ public class Step7 {
 	}
 	
 	public static void q_1157(){
-		// A´Â 65
+		// Aï¿½ï¿½ 65
 		Scanner sc = new Scanner(System.in);
 		String str = sc.next();
 		sc.close();
@@ -130,7 +130,7 @@ public class Step7 {
 		StringBuilder a = new StringBuilder(sc.next()).reverse();
 		StringBuilder b = new StringBuilder(sc.next()).reverse();
 		sc.close();
-		
+			
 		System.out.println(Math.max(Integer.parseInt(a.toString()), Integer.parseInt(b.toString())));
 		
 		return;
@@ -164,7 +164,6 @@ public class Step7 {
 		sc.close();
 		int result=0;
 		int index=0;
-
 		
 		while(index<str.length()){
 			String check = (index<=str.length()-2)?str.substring(index,index+2):"";

@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-// for¹®
+// forë¬¸
 public class Step3 {
 	
 	public static void q_2739(){

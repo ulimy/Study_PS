@@ -2,7 +2,7 @@ package baekjoon_Study;
 
 import java.util.Scanner;
 
-//while¹®
+//whileë¬¸
 public class Step4 {
 	
 	public static void q_10952(){

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-//1Â÷¿ø ¹è¿­
+//1ì°¨ì›ë°°ì—´
 public class Step5 {
 	
 	public static void q_10818(){

@@ -2,7 +2,7 @@ package baekjoon_Study;
 
 import java.util.Scanner;
 
-//if¹®
+//ifë¬¸
 public class Step2 {
 	
 	public static void q_1330(){
