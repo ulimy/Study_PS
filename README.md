@@ -65,15 +65,15 @@
  ---
  ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
 
- 1. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)
- 2. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)
- 3. [for문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step3.java)
- 4. [while문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step4.java)
- 5. [1차원 배열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step5.java)
- 6. [함수](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step6.java)
- 7. [문자열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step7.java)
- 10. [재귀](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step10.java)
- 11. [브루트 포스](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step11.java)
+ 1\. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)
+ 2\. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)
+ 3\. [for문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step3.java)
+ 4\. [while문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step4.java)
+ 5\. [1차원 배열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step5.java)
+ 6\. [함수](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step6.java)
+ 7\. [문자열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step7.java)
+ 10\. [재귀](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step10.java)
+ 11\. [브루트 포스](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step11.java)
 
  ---
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
