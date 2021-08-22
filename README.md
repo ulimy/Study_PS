@@ -63,6 +63,12 @@
  - [LetterCombinationsOfPhonenumber](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/LetterCombinationsOfPhonenumber_0204.java)
 
  ---
+ ### 정렬
+ 1. [선택정렬(Selection Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/SelectionSort.java)
+ 2. [삽입정렬(Insertion Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/InsertionSort.java)
+ 3. [버블정렬(Bubble Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/BubbleSort.java)
+
+ ---
  ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
 
  1\. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)  
