@@ -69,6 +69,7 @@
  3. [버블정렬(Bubble Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/BubbleSort.java)
  4. [병합정렬(Merge Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/MergeSort.java)
  5. [힙정렬(Heap Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/HeapSort.java)
+ 6. [퀵 정렬(Quick sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/QuickSort.java)
 
  ---
  ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
