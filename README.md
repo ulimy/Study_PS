@@ -67,6 +67,7 @@
  1. [선택정렬(Selection Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/SelectionSort.java)
  2. [삽입정렬(Insertion Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/InsertionSort.java)
  3. [버블정렬(Bubble Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/BubbleSort.java)
+ 4. [병합정렬(Merge Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/MergeSort.java)
 
  ---
  ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)

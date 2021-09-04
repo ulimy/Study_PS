@@ -48,11 +48,14 @@ public class MergeSort {
 				arr[t] = sorted[t];
 			}
 		}
+		
+		return;
 	}
 
 	public static void main(String[] args) {
 		mergeSort(0, arr.length - 1);
 		System.out.println(Arrays.toString(arr));
+		return;
 	}
 
 }
