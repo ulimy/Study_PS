@@ -101,9 +101,10 @@ public class Step15 {
 		// 배열 초기화
 		long[] tiles = new long[n + 1];
 		tiles[1] = 1;
-		if(n>=2) tiles[2] = 2;
+		if (n >= 2)
+			tiles[2] = 2;
 
-		if(n>=3){
+		if (n >= 3) {
 			for (int i = 3; i <= n; i++) {
 				// n-1개에 1붙이기 + n-2개에 00 붙이기
 				tiles[i] = (tiles[i - 1] + tiles[i - 2]) % 15746;
@@ -116,10 +117,51 @@ public class Step15 {
 		return;
 	}
 
+	// 파도반 수열
+	public static void p_9461() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[] input = new int[count];
+		int max = 0;
+
+		// 테스트케이스 담기
+		for (int i = 0; i < count; i++) {
+			input[i] = sc.nextInt();
+			max = Math.max(max, input[i]);
+		}
+
+		sc.close();
+
+		// dp 초기화
+		long[] padovan = new long[max + 1];
+		padovan[1] = 1;
+		if(max>=2) padovan[2] = 1;
+		if(max>=3) padovan[3] = 1;
+		if(max>=4) padovan[4] = 2;
+		if(max>=5) padovan[5] = 2;
+		
+		if(max>=6){
+			for(int i=6;i<=max;i++){
+				padovan[i] = padovan[i-1]+padovan[i-5];
+			}
+		}
+
+		// 결과 출력
+		StringBuilder result = new StringBuilder();
+		for (int in : input) {
+			result.append(padovan[in] + "\n");
+		}
+		System.out.println(result.toString());
+
+		return;
+
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
-		p_1904();
+		// p_1904();
+		p_9461();
 
 		return;
 	}
