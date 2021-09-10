@@ -161,11 +161,45 @@ public class Step15 {
 
 	}
 
+	// RGB 거리
+	public static void p_1149() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[][] expense = new int[count][3];
+		int[][] dp = new int[count][3];
+
+		for (int i = 0; i < count; i++) {
+			expense[i][0] = sc.nextInt();
+			expense[i][1] = sc.nextInt();
+			expense[i][2] = sc.nextInt();
+		}
+
+		sc.close();
+
+		// dp 초기화
+		dp[0][0] = expense[0][0];
+		dp[0][1] = expense[0][1];
+		dp[0][2] = expense[0][2];
+
+		for (int i = 1; i < count; i++) {
+			// 겹치지 않는 두가지 색 중 더 작은 값 + 칠할 색
+			dp[i][0] = Math.min(dp[i - 1][1], dp[i - 1][2]) + expense[i][0];
+			dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][2]) + expense[i][1];
+			dp[i][2] = Math.min(dp[i - 1][0], dp[i - 1][1]) + expense[i][2];
+		}
+
+		count--;
+		System.out.println(Math.min(dp[count][0], Math.min(dp[count][1], dp[count][2])));
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
 		// p_1904();
-		p_9461();
+		// p_9461();
+		p_1149();
 
 		return;
 	}
