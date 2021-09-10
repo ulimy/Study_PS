@@ -52,13 +52,13 @@ public class Step15 {
 		// 조건 1
 		if (a <= 0 || b <= 0 || c <= 0)
 			return 1;
-		
+
 		// 조건 2
-		if (a > 20 || b > 20 || c > 20) { 
+		if (a > 20 || b > 20 || c > 20) {
 			exciting[20][20][20] = w(20, 20, 20);
 			return exciting[20][20][20];
-		} 
-		
+		}
+
 		if (a < b && b < c) { // 조건 3
 			exciting[a][b][c] = w(a, b, c - 1) + w(a, b - 1, c - 1) - w(a, b - 1, c);
 		} else { // 조건 4
@@ -81,7 +81,7 @@ public class Step15 {
 			if (a == -1 && b == -1 && c == -1)
 				break;
 
-			result.append("w("+a+", "+b+", "+c+") = ");
+			result.append("w(" + a + ", " + b + ", " + c + ") = ");
 			result.append(w(a, b, c) + "\n");
 
 		}
@@ -92,10 +92,35 @@ public class Step15 {
 		return;
 	}
 
+	// 01타일
+	public static void p_1904() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		// 배열 초기화
+		long[] tiles = new long[n + 1];
+		tiles[1] = 1;
+		if(n>=2) tiles[2] = 2;
+
+		if(n>=3){
+			for (int i = 3; i <= n; i++) {
+				// n-1개에 1붙이기 + n-2개에 00 붙이기
+				tiles[i] = (tiles[i - 1] + tiles[i - 2]) % 15746;
+			}
+
+		}
+
+		System.out.println(tiles[n]);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
-		p_9184();
-		
+		// p_9184();
+		p_1904();
+
 		return;
 	}
 
