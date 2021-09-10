@@ -135,14 +135,18 @@ public class Step15 {
 		// dp 초기화
 		long[] padovan = new long[max + 1];
 		padovan[1] = 1;
-		if(max>=2) padovan[2] = 1;
-		if(max>=3) padovan[3] = 1;
-		if(max>=4) padovan[4] = 2;
-		if(max>=5) padovan[5] = 2;
-		
-		if(max>=6){
-			for(int i=6;i<=max;i++){
-				padovan[i] = padovan[i-1]+padovan[i-5];
+		if (max >= 2)
+			padovan[2] = 1;
+		if (max >= 3)
+			padovan[3] = 1;
+		if (max >= 4)
+			padovan[4] = 2;
+		if (max >= 5)
+			padovan[5] = 2;
+
+		if (max >= 6) {
+			for (int i = 6; i <= max; i++) {
+				padovan[i] = padovan[i - 1] + padovan[i - 5];
 			}
 		}
 
