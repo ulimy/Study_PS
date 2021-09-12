@@ -1,5 +1,6 @@
 package baekjoon_Study;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 // 동적계획법
@@ -194,12 +195,56 @@ public class Step15 {
 		return;
 	}
 
+	// 정수 삼각형
+	public static void p_1932() {
+		Scanner sc = new Scanner(System.in);
+		int size = sc.nextInt();
+		int[][] arr = new int[size][];
+		int[][] dp = new int[size][];
+
+		// 입력 받기
+		for (int i = 0; i < size; i++) {
+			arr[i] = new int[i + 1];
+			dp[i] = new int[i + 1];
+			for (int j = 0; j < i + 1; j++) {
+				arr[i][j] = sc.nextInt();
+			}
+		}
+		sc.close();
+		
+		// dp 초기값
+		dp[0][0] = arr[0][0];
+
+		for (int i = 1; i < size; i++) {
+
+			// 맨 앞
+			dp[i][0] = dp[i - 1][0] + arr[i][0]; // 대각선 오른쪽 위 선택
+
+			// 중간
+			for (int j = 1; j < i; j++) {
+				dp[i][j] = Math.max(dp[i - 1][j - 1], dp[i - 1][j]) + arr[i][j];
+			}
+
+			// 맨뒤
+			dp[i][i] = dp[i - 1][i - 1] + arr[i][i]; // 대각선 왼쪽 위 선택
+		}
+		
+		// 최대값 찾기
+		int result = -1;
+		for(int k=0;k<size;k++){ result = Math.max(dp[size-1][k],result); }
+		
+		System.out.println(result);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
 		// p_1904();
 		// p_9461();
-		p_1149();
+		// p_1149();
+		p_1932();
 
 		return;
 	}
