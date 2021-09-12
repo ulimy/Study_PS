@@ -407,6 +407,52 @@ public class Step15 {
 
 	}
 
+	// 가장 긴 증가하는 부분수열
+	public static void p_11054() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[] nums = new int[count];
+
+		for (int i = 0; i < count; i++) {
+			nums[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		int[] dp_up = new int[count];
+		int[] dp_down = new int[count];
+		Arrays.fill(dp_up, 1);
+		Arrays.fill(dp_down, 1);
+
+		// 0~i까지 증가하는 가장 긴 값 구하기
+		for (int i = 0; i < count; i++) {
+			for (int j = 0; j < i; j++) {
+				if (nums[i] > nums[j]) {
+					dp_up[i] = Math.max(dp_up[i], dp_up[j] + 1);
+				}
+			}
+		}
+
+		// i~count까지 감소하는 가장 긴 값 구하기
+		for (int i = count - 1; i >= 0; i--) {
+			for (int j = count - 1; j > i; j--) {
+				if (nums[i] > nums[j]) {
+					dp_down[i] = Math.max(dp_down[i], dp_down[j] + 1);
+				}
+			}
+		}
+
+		// dp_up + dp_down -> i를 기준으로 제일 긴 수열
+		int result = 0;
+		for (int k = 0; k < count; k++) {
+			result = Math.max(result, dp_up[k] + dp_down[k]);
+		}
+
+		// 자기자신이 중복됨! 1빼기
+		System.out.println(result - 1);
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
@@ -419,7 +465,8 @@ public class Step15 {
 		// p_10844();
 		// p_2156();
 		// p_11053();
-		p_11053();
+		// p_11053();
+		p_11054();
 
 		return;
 	}
