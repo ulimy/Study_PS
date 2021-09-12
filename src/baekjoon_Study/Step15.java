@@ -211,7 +211,7 @@ public class Step15 {
 			}
 		}
 		sc.close();
-		
+
 		// dp 초기값
 		dp[0][0] = arr[0][0];
 
@@ -228,12 +228,47 @@ public class Step15 {
 			// 맨뒤
 			dp[i][i] = dp[i - 1][i - 1] + arr[i][i]; // 대각선 왼쪽 위 선택
 		}
-		
+
 		// 최대값 찾기
 		int result = -1;
-		for(int k=0;k<size;k++){ result = Math.max(dp[size-1][k],result); }
-		
+		for (int k = 0; k < size; k++) {
+			result = Math.max(dp[size - 1][k], result);
+		}
+
 		System.out.println(result);
+
+		return;
+	}
+
+	// 계단오르기
+	public static void p_2579() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		long arr[] = new long[count];
+		long dp[] = new long[count];
+
+		for (int i = 0; i < count; i++) {
+			arr[i] = sc.nextLong();
+		}
+
+		sc.close();
+
+		// dp초기화
+		if (count > 0)
+			dp[0] = arr[0];
+		if (count > 1)
+			dp[1] = dp[0] + arr[1];
+		if (count > 2)
+			dp[2] = Math.max(arr[0],arr[1]) + arr[2];
+
+		if (count > 3) {
+			for (int i = 3; i < count; i++) {
+				// i-3번째 계단과 i-1계단을 밟음 or i-2번째 계단 밝음
+				dp[i] = Math.max(dp[i - 3] + arr[i - 1], dp[i - 2]) + arr[i];
+			}
+		}
+
+		System.out.println(dp[count - 1]);
 
 		return;
 	}
@@ -244,7 +279,8 @@ public class Step15 {
 		// p_1904();
 		// p_9461();
 		// p_1149();
-		p_1932();
+		// p_1932();
+		p_2579();
 
 		return;
 	}
