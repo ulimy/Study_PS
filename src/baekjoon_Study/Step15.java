@@ -373,7 +373,39 @@ public class Step15 {
 
 	}
 	
-	
+	// 가장 긴 증가하는 부분수열
+	public static void p_11053(){
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[] nums = new int[count];
+		
+		for(int i=0;i<count;i++){
+			nums[i] = sc.nextInt();
+		}
+		
+		sc.close();
+		
+		int[] dp = new int[count];
+		Arrays.fill(dp, 1);
+		
+		for(int j=1;j<count;j++){
+			for(int k=0;k<j;k++){
+				// 증가하는 제일 긴 값으로 설정
+				if(nums[j]>nums[k]){
+					dp[j] = Math.max(dp[j], dp[k]+1);
+				}
+			}
+		}
+		
+		int result=-1;
+		for(int num : dp){
+			result = Math.max(num, result);
+		}
+		
+		System.out.println(result);
+		return;
+		
+	}
 
 	public static void main(String[] args) {
 		// p_1003();
@@ -385,7 +417,9 @@ public class Step15 {
 		// p_2579();
 		// p_1463();
 		// p_10844();
-		p_2156();
+		// p_2156();
+		// p_11053();
+		p_11053();
 
 		return;
 	}
