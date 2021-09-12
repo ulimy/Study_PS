@@ -259,7 +259,7 @@ public class Step15 {
 		if (count > 1)
 			dp[1] = dp[0] + arr[1];
 		if (count > 2)
-			dp[2] = Math.max(arr[0],arr[1]) + arr[2];
+			dp[2] = Math.max(arr[0], arr[1]) + arr[2];
 
 		if (count > 3) {
 			for (int i = 3; i < count; i++) {
@@ -273,6 +273,37 @@ public class Step15 {
 		return;
 	}
 
+	public static void p_1463() {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		sc.close();
+
+		// dp 초기화
+		int[] dp = new int[N + 1];
+		dp[0] = 0;
+		dp[1] = 0;
+
+		for (int i = 2; i <= N; i++) {
+			// 1 빼기
+			dp[i] = dp[i - 1] + 1;
+
+			// 3으로 나누기
+			if (i % 3 == 0) {
+				dp[i] = Math.min(dp[i], dp[i / 3] + 1);
+			}
+
+			// 2로 나누기
+			if (i % 2 == 0) {
+				dp[i] = Math.min(dp[i], dp[i / 2] + 1);
+			}
+		}
+		
+		System.out.println(dp[N]);
+		
+		return;
+
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
@@ -280,7 +311,8 @@ public class Step15 {
 		// p_9461();
 		// p_1149();
 		// p_1932();
-		p_2579();
+		// p_2579();
+		p_1463();
 
 		return;
 	}
