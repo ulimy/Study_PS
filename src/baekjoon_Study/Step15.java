@@ -298,46 +298,46 @@ public class Step15 {
 				dp[i] = Math.min(dp[i], dp[i / 2] + 1);
 			}
 		}
-		
+
 		System.out.println(dp[N]);
-		
+
 		return;
 
 	}
-	
+
 	// 쉬운 계단수
 	public static void p_10844() {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		sc.close();
-		
+
 		// 행 - 자릿수 열 - 선택된 숫자
 		long[][] dp = new long[N][10];
-		Arrays.fill(dp[0],1);
-		dp[0][0]=0; // 0으로 시작하면 계단수 아님
-		
+		Arrays.fill(dp[0], 1);
+		dp[0][0] = 0; // 0으로 시작하면 계단수 아님
+
 		long mod = 1000000000;
-		
-		for(int i=1;i<N;i++){
-			
+
+		for (int i = 1; i < N; i++) {
+
 			// 0 선택 -> 이전에 1선택됨
-			dp[i][0] = dp[i-1][1];
-			
+			dp[i][0] = dp[i - 1][1];
+
 			// 9선택 -> 이전에 8선택됨
-			dp[i][9] = dp[i-1][8];
-			
+			dp[i][9] = dp[i - 1][8];
+
 			// 1~8 --이거나 ++이거나
-			for(int j=1;j<=8;j++){
-				dp[i][j] = (dp[i-1][j-1]+dp[i-1][j+1])%mod;
+			for (int j = 1; j <= 8; j++) {
+				dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j + 1]) % mod;
 			}
 		}
-		
+
 		long result = 0;
-		for(long num : dp[N-1]){
-			result+=num;
-			result%=mod;
+		for (long num : dp[N - 1]) {
+			result += num;
+			result %= mod;
 		}
-		
+
 		System.out.println(result);
 		return;
 	}
