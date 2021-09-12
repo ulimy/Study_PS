@@ -342,6 +342,39 @@ public class Step15 {
 		return;
 	}
 
+	// 포도주시식
+	public static void p_2156() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[] wines = new int[count];
+
+		for (int i = 0; i < count; i++) {
+			wines[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		int[] dp = new int[count];
+		dp[0] = wines[0];
+		if (count > 1)
+			dp[1] = dp[0] + wines[1];
+		if (count > 2)
+			dp[2] = Math.max(dp[1], Math.max(wines[0], wines[1]) + wines[2]);
+
+		if (count > 3) {
+			for (int i = 3; i < count; i++) {
+				// i-3,i-1고르거나 i-2 고르기 or 아예 고르지않고 i-1선택
+				dp[i] = Math.max(dp[i - 1], Math.max(dp[i - 3] + wines[i - 1], dp[i - 2]) + wines[i]);
+			}
+		}
+
+		System.out.println(dp[count - 1]);
+		return;
+
+	}
+	
+	
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
@@ -351,7 +384,8 @@ public class Step15 {
 		// p_1932();
 		// p_2579();
 		// p_1463();
-		p_10844();
+		// p_10844();
+		p_2156();
 
 		return;
 	}
