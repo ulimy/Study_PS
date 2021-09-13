@@ -453,6 +453,45 @@ public class Step15 {
 		return;
 	}
 
+	// 전깃줄
+	public static void p_2565() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[][] electric = new int[count][2];
+
+		for (int i = 0; i < count; i++) {
+			electric[i][0] = sc.nextInt();
+			electric[i][1] = sc.nextInt();
+		}
+
+		sc.close();
+
+		// 살릴 수 있는 전깃줄의 개수
+		int[] dp = new int[count];
+		Arrays.fill(dp, 1);
+
+		Arrays.sort(electric, (a, b) -> (a[0] - b[0]));
+
+		for (int i = 0; i < count; i++) {
+			// i 이전의 전깃줄 확인 -> 교차되지 않는다면 j까지에서 1 추가!
+			for (int j = 0; j < i; j++) {
+				if (electric[i][1] > electric[j][1]) {
+					dp[i] = Math.max(dp[i], dp[j] + 1);
+				}
+			}
+		}
+
+		int result = 0;
+		for (int num : dp) {
+			result = Math.max(num, result);
+		}
+
+		// 철거 개수 = 전체 - 살린 전깃줄 개수
+		System.out.println(count - result);
+		return;
+
+	}
+
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
@@ -466,7 +505,8 @@ public class Step15 {
 		// p_2156();
 		// p_11053();
 		// p_11053();
-		p_11054();
+		// p_11054();
+		p_2565();
 
 		return;
 	}
