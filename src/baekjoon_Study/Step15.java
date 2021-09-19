@@ -541,6 +541,44 @@ public class Step15 {
 		return;
 	}
 
+	// 평범한 배낭
+	public static void p_12865(){
+		Scanner sc = new Scanner(System.in);
+		
+		int count = sc.nextInt();
+		int max_weight = sc.nextInt();
+		int[] weight = new int[count+1];
+		int[] value = new int[count+1];
+		
+		for(int i=1;i<=count;i++){
+			weight[i] = sc.nextInt();
+			value[i] = sc.nextInt();
+		}
+		
+		sc.close();
+		
+		// i개의 아이템의 무게 j 
+		int[][] dp = new int[count+1][max_weight+1];
+		
+		for(int j=1;j<=count;j++){
+			for(int k=1;k<=max_weight;k++){
+				
+				// 일단 이전 값 저장
+				dp[j][k] = dp[j-1][k];
+				
+				// k무게에서 내가 가진 무게를 빼도 0 이상이라면 선택 가능
+				if(k-weight[j]>=0){
+					// 이전 무게 or 남은 무게
+					dp[j][k] = Math.max(dp[j-1][k], dp[j-1][k-weight[j]]+value[j]);
+				}
+			}
+		}
+		
+		System.out.println(dp[count][max_weight]);
+		
+		return;
+	}
+	
 	public static void main(String[] args) {
 		// p_1003();
 		// p_9184();
@@ -556,9 +594,9 @@ public class Step15 {
 		// p_11053();
 		// p_11054();
 		// p_2565();
-		p_9251();
+		// p_9251();
 		// p_1912();
-
+		p_12865();
 		return;
 	}
 
