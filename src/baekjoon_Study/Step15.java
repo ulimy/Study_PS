@@ -1,8 +1,6 @@
 package baekjoon_Study;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 // 동적계획법
@@ -496,7 +494,24 @@ public class Step15 {
 
 	// 최장 공통 부분 수열
 	public static void p_9251() {
+		Scanner sc = new Scanner(System.in);
+		String a = sc.next();
+		String b = sc.next();
+		sc.close();
 
+		int[][] lcs = new int[a.length() + 1][b.length() + 1];
+
+		for (int i = 1; i <= a.length(); i++) {
+			for (int j = 1; j <= b.length(); j++) {
+				if (a.charAt(i - 1) == b.charAt(j - 1)) { // 값이 같으면 이전보다 1추가
+					lcs[i][j] = lcs[i - 1][j - 1] + 1;
+				} else { // 값이 다르면 이전 두개의 값중에 더 큰 값
+					lcs[i][j] = Math.max(lcs[i][j - 1], lcs[i - 1][j]);
+				}
+			}
+		}
+
+		System.out.println(lcs[a.length()][b.length()]);
 		return;
 	}
 
@@ -541,8 +556,8 @@ public class Step15 {
 		// p_11053();
 		// p_11054();
 		// p_2565();
-		// p_9251();
-		p_1912();
+		p_9251();
+		// p_1912();
 
 		return;
 	}
