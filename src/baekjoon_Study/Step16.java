@@ -97,10 +97,39 @@ public class Step16 {
 		return;
 	}
 
+	// 잃어버린 괄호
+	public static void p_1541() {
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		sc.close();
+
+		// - 기준으로 나누기
+		String[] arr = input.split("-");
+
+		int result = 0;
+
+		// 처음 - 전까지는 모두 더하기
+		for (String s : arr[0].split("\\+")) {
+			result += Integer.parseInt(s);
+		}
+
+		// 2번째부터는 가장 큰 값을 뺴야하므로 +를 기준으로 다 빼기
+		for (int i = 1; i < arr.length; i++) {
+			for (String s : arr[i].split("\\+")) {
+				result -= Integer.parseInt(s);
+			}
+		}
+
+		System.out.println(result);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_11047();
 		// p_1931();
-		p_11399();
+		// p_11399();
+		p_1541();
 		return;
 	}
 
