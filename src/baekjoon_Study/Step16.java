@@ -48,16 +48,16 @@ public class Step16 {
 
 		sc.close();
 
-		Arrays.sort(meetings, new Comparator<int[]>(){
+		Arrays.sort(meetings, new Comparator<int[]>() {
 			@Override
-			public int compare(int[] a, int[] b){
-				return (a[1]==b[1])?a[0]-b[0]:a[1]-b[1];
+			public int compare(int[] a, int[] b) {
+				return (a[1] == b[1]) ? a[0] - b[0] : a[1] - b[1];
 			}
 		});
 
 		int pre_end = 0;
 		int result = 0;
-		
+
 		for (int i = 0; i < count; i++) {
 			if (pre_end <= meetings[i][0]) {
 				pre_end = meetings[i][1];
@@ -66,11 +66,41 @@ public class Step16 {
 		}
 
 		System.out.println(result);
+
+		return;
+	}
+
+	// ATM
+	public static void p_11399() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[] times = new int[count];
+
+		for (int i = 0; i < count; i++) {
+			times[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		Arrays.sort(times);
+
+		int result = 0;
+		int pre = 0; // 직전 사람의 소요시간
+		for (int t : times) {
+			result += t;
+			result += pre;
+			pre += t;
+		}
+
+		System.out.println(result);
+
+		return;
 	}
 
 	public static void main(String[] args) {
 		// p_11047();
-		p_1931();
+		// p_1931();
+		p_11399();
 		return;
 	}
 
