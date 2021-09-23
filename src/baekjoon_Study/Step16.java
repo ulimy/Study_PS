@@ -125,11 +125,47 @@ public class Step16 {
 		return;
 	}
 
+	// 주유소
+	public static void p_13305() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		long[] dist = new long[count - 1]; // 거리
+		long[] cost = new long[count]; // 기름값
+
+		for (int i = 0; i < count - 1; i++) {
+			dist[i] = sc.nextLong();
+		}
+
+		for (int i = 0; i < count; i++) {
+			cost[i] = sc.nextLong();
+		}
+
+		sc.close();
+
+		long result = 0;
+		long min_cost = cost[0]; // 제일 작은 cost
+
+		for (int i = 0; i < count - 1; i++) {
+
+			// 더 작은 cost가 나타나면 갱신
+			min_cost = Math.min(min_cost, cost[i]);
+
+			// 제일 작은 cost로 기름값 구하기
+			result += (min_cost * dist[i]);
+		}
+
+		System.out.println(result);
+
+		return;
+
+	}
+
 	public static void main(String[] args) {
 		// p_11047();
 		// p_1931();
 		// p_11399();
-		p_1541();
+		// p_1541();
+		p_13305();
 		return;
 	}
 
