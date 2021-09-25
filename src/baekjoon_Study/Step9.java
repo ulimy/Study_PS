@@ -86,12 +86,39 @@ public class Step9 {
 		return;
 
 	}
+
+	// 소인수 분해
+	public static void p_11653() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		if (n == 1)
+			return;
+
+		StringBuilder result = new StringBuilder();
+
+		// 소수로 나누어 떨어지지 않을때까지 계속 나누기
+		// 나누어 떨어지지 않는다면 ++을 통해 다음 소수로 이동
+		for (int i = 2; i <= n; i++) {
+			while (n % i == 0) {
+				result.append(i + "\n");
+				n /= i;
+			}
+		}
+
+		System.out.println(result.toString());
+		
+		return;
+		
+	}
 	
 	
 
 	public static void main(String[] args) {
 		// p_1978();
-		p_2581();
+		// p_2581();
+		p_11653();
 		return;
 	}
 
