@@ -144,7 +144,7 @@ public class Step9 {
 			int count = 0;
 
 			// num보다 커야하므로 num+1부터 시작
-			for (int i = num+1; i <= num * 2; i++) {
+			for (int i = num + 1; i <= num * 2; i++) {
 				if (!arr[i])
 					count++;
 			}
@@ -161,11 +161,61 @@ public class Step9 {
 		return;
 	}
 
+	// 골드바흐의 추측
+	public static void p_9020() {
+		// 1~10000까지의 소수 구하기
+		boolean[] arr = new boolean[10001];
+
+		arr[0] = true;
+		arr[1] = true;
+
+		// 에라토스테네스의 체 이용
+		for (int i = 2; i * i <= 10000; i++) {
+			if (!arr[i]) {
+				int index = i * 2;
+				while (index <= 10000) {
+					arr[index] = true;
+					index += i;
+				}
+			}
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		
+		StringBuilder result = new StringBuilder();
+		
+		for(int i=0;i<count;i++){
+			
+			int num = sc.nextInt();
+			
+			// 어차피 덧셈으로 대응되므로 반만 해도 됨!
+			// 차이가 가장 작은 값을 고르기 위해 선택
+			int index = num/2+1; 
+			
+			while(true){
+				if(!arr[index] && !arr[num-index]) break;
+				index--;
+			}
+			
+			result.append(Math.min(index, num-index)+" "+Math.max(index, num-index)+"\n");
+			
+		}
+		
+		sc.close();
+		
+		System.out.println(result.toString());
+		
+		return;
+		
+	}
+
 	public static void main(String[] args) {
 		// p_1978();
 		// p_2581();
 		// p_11653();
-		p_4948();
+		// p_4948();
+		p_9020();
 		return;
 	}
 
