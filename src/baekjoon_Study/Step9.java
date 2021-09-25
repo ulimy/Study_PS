@@ -108,19 +108,64 @@ public class Step9 {
 		}
 
 		System.out.println(result.toString());
-		
+
 		return;
-		
+
 	}
-	
+
 	// 1929 소수구하기는 2581과 거의 동일하고 그또한 에라토스테네스의 체로 풀었으므로 생략
-	
-	
+
+	// 베르트랑 공준
+	public static void p_4948() {
+
+		// 1~246912까지의 소수 구하기 (246912 -> 123456*2)
+		boolean[] arr = new boolean[246913];
+
+		arr[0] = true;
+		arr[1] = true;
+
+		// 에라토스테네스의 체 이용
+		for (int i = 2; i * i <= 246912; i++) {
+			if (!arr[i]) {
+				int index = i * 2;
+				while (index <= 246912) {
+					arr[index] = true;
+					index += i;
+				}
+			}
+		}
+
+		Scanner sc = new Scanner(System.in);
+
+		int num = sc.nextInt();
+		StringBuilder result = new StringBuilder();
+
+		while (num > 0) {
+			int count = 0;
+
+			// num보다 커야하므로 num+1부터 시작
+			for (int i = num+1; i <= num * 2; i++) {
+				if (!arr[i])
+					count++;
+			}
+
+			result.append(count + "\n");
+
+			num = sc.nextInt();
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
 
 	public static void main(String[] args) {
 		// p_1978();
 		// p_2581();
-		p_11653();
+		// p_11653();
+		p_4948();
 		return;
 	}
 
