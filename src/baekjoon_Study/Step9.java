@@ -113,6 +113,8 @@ public class Step9 {
 		
 	}
 	
+	// 1929 소수구하기는 2581과 거의 동일하고 그또한 에라토스테네스의 체로 풀었으므로 생략
+	
 	
 
 	public static void main(String[] args) {
