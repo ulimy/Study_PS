@@ -81,6 +81,7 @@
  5\. [1차원 배열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step5.java)  
  6\. [함수](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step6.java)  
  7\. [문자열](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step7.java)  
+ 9\. [기본수학2](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step9.java)  
  10\. [재귀](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step10.java)  
  11\. [브루트 포스](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step11.java)  
  14\. [백트래킹](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step14.java)    
