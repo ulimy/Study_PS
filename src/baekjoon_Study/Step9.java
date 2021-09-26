@@ -179,35 +179,57 @@ public class Step9 {
 				}
 			}
 		}
-		
+
 		Scanner sc = new Scanner(System.in);
 		int count = sc.nextInt();
-		
+
 		StringBuilder result = new StringBuilder();
-		
-		for(int i=0;i<count;i++){
-			
+
+		for (int i = 0; i < count; i++) {
+
 			int num = sc.nextInt();
-			
+
 			// 어차피 덧셈으로 대응되므로 반만 해도 됨!
 			// 차이가 가장 작은 값을 고르기 위해 선택
-			int index = num/2+1; 
-			
-			while(true){
-				if(!arr[index] && !arr[num-index]) break;
+			int index = num / 2 + 1;
+
+			while (true) {
+				if (!arr[index] && !arr[num - index])
+					break;
 				index--;
 			}
-			
-			result.append(Math.min(index, num-index)+" "+Math.max(index, num-index)+"\n");
-			
+
+			result.append(Math.min(index, num - index) + " " + Math.max(index, num - index) + "\n");
+
 		}
-		
+
 		sc.close();
-		
+
 		System.out.println(result.toString());
-		
+
 		return;
-		
+
+	}
+
+	// 직사각형에서 탈출
+	public static void p_1085() {
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		int w = sc.nextInt();
+		int h = sc.nextInt();
+		sc.close();
+
+		// 왼쪽 or 오른쪽
+		int result = Math.min(x, w - x);
+
+		// 아래 or 위
+		result = Math.min(result, Math.min(h - y, y));
+
+		System.out.println(result);
+
+		return;
+
 	}
 
 	public static void main(String[] args) {
@@ -215,7 +237,8 @@ public class Step9 {
 		// p_2581();
 		// p_11653();
 		// p_4948();
-		p_9020();
+		// p_9020();
+		p_1085();
 		return;
 	}
 
