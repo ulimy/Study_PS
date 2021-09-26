@@ -256,38 +256,48 @@ public class Step9 {
 
 		return;
 	}
-	
+
 	// 직각삼각형
-	public static void p_4153(){
+	public static void p_4153() {
 		Scanner sc = new Scanner(System.in);
 		StringBuilder result = new StringBuilder();
 		int[] nums = new int[3];
 		nums[0] = sc.nextInt();
 		nums[1] = sc.nextInt();
 		nums[2] = sc.nextInt();
-		
-		while(nums[0]!=0 && nums[1]!=0 && nums[2]!=0){
-			
+
+		while (nums[0] != 0 && nums[1] != 0 && nums[2] != 0) {
+
 			Arrays.sort(nums);
-			
+
 			// c^2 = a^2 + b^2
-			result.append((Math.pow(nums[2],2)==Math.pow(nums[0],2)+Math.pow(nums[1],2))?"right":"wrong");
+			result.append((Math.pow(nums[2], 2) == Math.pow(nums[0], 2) + Math.pow(nums[1], 2)) ? "right" : "wrong");
 			result.append("\n");
-			
+
 			nums[0] = sc.nextInt();
 			nums[1] = sc.nextInt();
 			nums[2] = sc.nextInt();
 		}
-		
+
 		sc.close();
-		
+
 		System.out.println(result.toString());
-		
+
 		return;
 	}
 
-	
-	
+	// 택시 기하학
+	public static void p_3053() {
+		Scanner sc = new Scanner(System.in);
+		double r = sc.nextDouble();
+		sc.close();
+
+		System.out.println(r * r * Math.PI);
+		System.out.println(r * r * 2);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1978();
 		// p_2581();
@@ -296,7 +306,8 @@ public class Step9 {
 		// p_9020();
 		// p_1085();
 		// p_3009();
-		p_4153();
+		// p_4153();
+		p_3053();
 		return;
 	}
 
