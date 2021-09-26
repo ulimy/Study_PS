@@ -1,5 +1,6 @@
 package baekjoon_Study;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 //기본수학 2
@@ -232,13 +233,38 @@ public class Step9 {
 
 	}
 
+	// 네 번째 점
+	public static void p_3009() {
+		Scanner sc = new Scanner(System.in);
+		int[][] dots = new int[3][2];
+
+		for (int i = 0; i < 3; i++) {
+			dots[i][0] = sc.nextInt();
+			dots[i][1] = sc.nextInt();
+		}
+
+		sc.close();
+
+		Arrays.sort(dots, (a, b) -> a[0] - b[0]);
+
+		if (dots[0][0] != dots[1][0]) { // 왼쪽 아래 혹은 왼쪽 위가 없는 경우
+			// x좌표는 제일 작은 값, y좌표는 이미 제공되지 않은 다른 하나
+			System.out.println(dots[0][0] + " " + ((dots[0][1] == dots[1][1]) ? dots[2][1] : dots[1][1]));
+		} else { // 오른쪽 아래 혹은 오른쪽 위가 없는 경우
+			System.out.println(dots[2][0] + " " + ((dots[0][1] == dots[2][1]) ? dots[1][1] : dots[0][1]));
+		}
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1978();
 		// p_2581();
 		// p_11653();
 		// p_4948();
 		// p_9020();
-		p_1085();
+		// p_1085();
+		p_3009();
 		return;
 	}
 
