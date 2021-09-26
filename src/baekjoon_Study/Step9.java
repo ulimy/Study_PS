@@ -298,6 +298,58 @@ public class Step9 {
 		return;
 	}
 
+	// 터렛
+	public static void p_1002() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < count; i++) {
+			result.append(
+					turret(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt()) + "\n");
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	public static int turret(int x1, int y1, int r1, int x2, int y2, int r2) {
+
+		// 중심 사이의 거리
+		double dist = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
+
+		// 반지름 합
+		double r_sum = Math.pow(r1 + r2, 2);
+
+		// 반지름 차이
+		double r_sub = Math.pow(r1 - r2, 2);
+
+		// 완전히 같은 원
+		if (x1 == x2 && y1 == y2 && r1 == r2) {
+			return -1;
+		}
+
+		// 중심사이의 거리가 반지름의 합보다 큼 or 중심 사이의 거리가 반지릅의 차보다 작음 -> 접점 없음
+		else if (dist > r_sum || dist < r_sub) {
+			return 0;
+		}
+
+		// 외접 or 내접
+		else if (dist == r_sum || dist == r_sub) {
+			return 1;
+		}
+
+		// 모두 아니라면 두 점에서 만남
+		else {
+			return 2;
+		}
+
+	}
+
 	public static void main(String[] args) {
 		// p_1978();
 		// p_2581();
@@ -307,7 +359,8 @@ public class Step9 {
 		// p_1085();
 		// p_3009();
 		// p_4153();
-		p_3053();
+		// p_3053();
+		p_1002();
 		return;
 	}
 
