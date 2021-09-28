@@ -46,8 +46,38 @@ public class Step18 {
 		return;
 	}
 
+	// 제로
+	public static void p_10773() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		Stack<Integer> stack = new Stack<>();
+		int result = 0;
+
+		for (int i = 0; i < count; i++) {
+			int num = sc.nextInt();
+
+			if (num == 0) {
+				stack.pop();
+			} else {
+				stack.push(num);
+			}
+		}
+
+		sc.close();
+
+		for (Integer i : stack) {
+			result += i;
+		}
+
+		System.out.println(result);
+
+		return;
+	}
+
 	public static void main(String[] args) {
-		p_10828();
+		// p_10828();
+		p_10773();
+
 		return;
 	}
 
