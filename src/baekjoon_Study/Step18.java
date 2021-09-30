@@ -1,5 +1,6 @@
 package baekjoon_Study;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -201,12 +202,50 @@ public class Step18 {
 		return;
 	}
 
+	// 오큰수
+	public static void p_17298() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		int[] nums = new int[count];
+		int[] result = new int[count];
+		Stack<Integer> stack = new Stack<>();
+
+		for (int i = 0; i < count; i++) {
+			nums[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		Arrays.fill(result, -1); // result 초기화
+
+		for (int i = 0; i < count; i++) {
+
+			// 스택에 들어있는 인덱스를 통해 접근한값보다 현재값이 더 크다면 오큰수 발견
+			while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
+				result[stack.pop()] = nums[i];
+			}
+
+			stack.push(i);
+
+		}
+
+		StringBuilder output = new StringBuilder();
+		for (int r : result) {
+			output.append(r + " ");
+		}
+
+		System.out.println(output.toString());
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_10828();
 		// p_10773();
 		// p_9012();
 		// p_4949();
-		p_1874();
+		// p_1874();
+		p_17298();
 
 		return;
 	}
