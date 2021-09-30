@@ -159,11 +159,54 @@ public class Step18 {
 
 	}
 
+	// 스택 수열
+	public static void p_1874() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] nums = new int[n];
+		Stack<Integer> stack = new Stack<>();
+
+		for (int i = 0; i < n; i++) {
+			nums[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		int max = 0;
+		StringBuilder result = new StringBuilder();
+
+		for (int num : nums) {
+
+			// num값이 스택에 있는 최대값보다 클 경우 num까지 push
+			if (max < num) {
+				for (int i = max + 1; i <= num; i++) {
+					stack.push(i);
+					result.append("+\n");
+				}
+				max = num;
+			}
+
+			if (stack.peek() != num) { // peek값이 num과 다르다면 수열 불가능
+				System.out.println("NO");
+				return;
+			} else { // 해당 값이라면 pop
+				stack.pop();
+				result.append("-\n");
+			}
+
+		}
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_10828();
 		// p_10773();
 		// p_9012();
-		p_4949();
+		// p_4949();
+		p_1874();
 
 		return;
 	}
