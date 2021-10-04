@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 // 큐, 덱
@@ -49,8 +51,33 @@ public class Step19 {
 		return;
 	}
 
-	public static void main(String[] args) throws IOException {
-		p_18258();
+	// 카드2
+	public static void p_2164() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		Queue<Integer> queue = new LinkedList<>();
+
+		for (int i = 1; i <= n; i++) {
+			queue.offer(i);
+		}
+
+		while (queue.size() != 1) {
+			queue.poll();
+			queue.offer(queue.poll());
+
+		}
+
+		System.out.println(queue.poll());
+		
+		return;
+	}
+
+	//public static void main(String[] args) throws IOException {
+	public static void main(String[] args){
+		// p_18258();
+		p_2164();
 
 		return;
 	}
