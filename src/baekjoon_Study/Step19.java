@@ -165,10 +165,10 @@ public class Step19 {
 
 		return;
 	}
-	
+
 	// 덱
 	public static void p_10866() throws IOException {
-		
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		StringBuilder result = new StringBuilder();
@@ -212,13 +212,73 @@ public class Step19 {
 		return;
 	}
 
-	public static void main(String[] args) throws IOException {
-	// public static void main(String[] args) {
+	// 회전하는 큐
+	public static void p_1021() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[] nums = new int[m];
+
+		// 뽑아내야하는 원소들
+		for (int i = 0; i < m; i++) {
+			nums[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		// 이렇게 선언하면 특정 위치 조회 가능 ( queue가 LinkedList 상속받음 )
+		LinkedList<Integer> deque = new LinkedList<>();
+		int result = 0;
+
+		// dequeue 초기화
+		for (int i = 1; i <= n; i++) {
+			deque.offer(i);
+		}
+
+		for (int num : nums) {
+
+			// 제일 앞에 있지 않다면 이동
+			if (deque.peekFirst() != num) {
+
+				int index = deque.indexOf(num);
+
+				// 왼쪽으로 이동해서 뺴기
+				if (index <= (deque.size() / 2)) {
+					for (int j = 0; j < index; j++) {
+						result++;
+						deque.offerLast(deque.pollFirst());
+					}
+				}
+
+				// 오른쪽으로 이동해서 빼기
+				else {
+					// 뽑아햐 하는 원소까지 오른쪽으로 빼내서 왼쪽에 넣어줘야 함
+					for (int j = 0; j < deque.size() - index; j++) {
+						result++;
+						deque.offerFirst(deque.pollLast());
+					}
+				}
+			}
+
+			// 1번연산 수행
+			deque.pollFirst();
+
+		}
+
+		System.out.println(result);
+
+		return;
+
+	}
+
+	// public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		// p_18258();
 		// p_2164();
 		// p_11866();
 		// p_1996();
-		p_10866();
+		// p_10866();
+		p_1021();
 
 		return;
 	}
