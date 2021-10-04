@@ -3,7 +3,9 @@ package baekjoon_Study;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -163,13 +165,60 @@ public class Step19 {
 
 		return;
 	}
+	
+	// 덱
+	public static void p_10866() throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder result = new StringBuilder();
+		int count = Integer.parseInt(br.readLine());
+		Deque<Integer> deque = new ArrayDeque<>();
 
-	// public static void main(String[] args) throws IOException {
-	public static void main(String[] args) {
+		for (int i = 0; i < count; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+
+			switch (st.nextToken()) {
+			case "push_front":
+				deque.offerFirst(Integer.parseInt(st.nextToken()));
+				break;
+			case "push_back":
+				deque.offerLast(Integer.parseInt(st.nextToken()));
+				break;
+			case "pop_front":
+				result.append(((deque.isEmpty()) ? -1 : deque.pollFirst()) + "\n");
+				break;
+			case "pop_back":
+				result.append(((deque.isEmpty()) ? -1 : deque.pollLast()) + "\n");
+				break;
+			case "size":
+				result.append(deque.size() + "\n");
+				break;
+			case "empty":
+				result.append(((deque.isEmpty()) ? 1 : 0) + "\n");
+				break;
+			case "front":
+				result.append(((deque.isEmpty()) ? -1 : deque.peekFirst()) + "\n");
+				break;
+			case "back":
+				result.append(((deque.isEmpty()) ? -1 : deque.peekLast()) + "\n");
+				break;
+			}
+
+		}
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	public static void main(String[] args) throws IOException {
+	// public static void main(String[] args) {
 		// p_18258();
 		// p_2164();
 		// p_11866();
-		p_1996();
+		// p_1996();
+		p_10866();
 
 		return;
 	}
