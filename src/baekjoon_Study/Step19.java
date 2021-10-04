@@ -70,14 +70,49 @@ public class Step19 {
 		}
 
 		System.out.println(queue.poll());
-		
+
 		return;
 	}
 
-	//public static void main(String[] args) throws IOException {
-	public static void main(String[] args){
+	// 요세푸스 문제
+	public static void p_11866() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int k = sc.nextInt();
+		sc.close();
+
+		Queue<Integer> queue = new LinkedList<>();
+		StringBuilder result = new StringBuilder();
+		result.append("<");
+
+		for (int i = 1; i <= n; i++) {
+			queue.offer(i);
+		}
+
+		while (!queue.isEmpty()) {
+
+			// k-1명의 사람 뒤로 보내기
+			for (int i = 0; i < k - 1; i++) {
+				queue.offer(queue.poll());
+			}
+
+			// 제거
+			result.append(queue.poll() + ", ");
+		}
+
+		result.delete(result.length() - 2, result.length());
+		result.append(">");
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	// public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		// p_18258();
-		p_2164();
+		// p_2164();
+		p_11866();
 
 		return;
 	}
