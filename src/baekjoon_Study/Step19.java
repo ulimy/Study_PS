@@ -3,6 +3,7 @@ package baekjoon_Study;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -108,11 +109,67 @@ public class Step19 {
 		return;
 	}
 
+	// 프린터 큐
+	public static void p_1996() {
+		Scanner sc = new Scanner(System.in);
+
+		int count = sc.nextInt();
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < count; i++) {
+
+			ArrayList<Integer> priorities = new ArrayList<>();
+			Queue<int[]> queue = new LinkedList<>();
+
+			int n = sc.nextInt();
+			int m = sc.nextInt();
+
+			// 문서들 큐에 넣고, 중요도만 list에 따로 두기
+			for (int j = 0; j < n; j++) {
+				int p = sc.nextInt();
+				queue.offer(new int[] { j, p });
+				priorities.add(p);
+			}
+
+			// 우선순위 내림차순 정렬
+			priorities.sort((a, b) -> b - a);
+
+			int print = 1; // 인쇄 카운트
+
+			while (!queue.isEmpty()) {
+				int[] document = queue.peek();
+
+				// 가장 큰 중요도와 같다면 인쇄 가능
+				if (document[1] == priorities.get(0)) {
+					// 찾아야 하는 문서였다면 바로 끝
+					if (document[0] == m) {
+						result.append(print + "\n");
+						break;
+					} else {
+						queue.poll(); // 인쇄
+						priorities.remove(0); // 중요도 삭제
+						print++; // 인쇄 카운트 증가
+					}
+				} else {
+					// 인쇄 불가능 맨 뒤로 보내기
+					queue.offer(queue.poll());
+				}
+			}
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
 	// public static void main(String[] args) throws IOException {
 	public static void main(String[] args) {
 		// p_18258();
 		// p_2164();
-		p_11866();
+		// p_11866();
+		p_1996();
 
 		return;
 	}
