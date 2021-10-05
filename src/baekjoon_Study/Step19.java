@@ -271,14 +271,92 @@ public class Step19 {
 
 	}
 
-	// public static void main(String[] args) throws IOException {
-	public static void main(String[] args) {
+	// AC
+	public static String ac(char[] arr, Deque<Integer> deque) {
+
+		boolean direction = true; // true면 앞 false면 뒤
+		StringBuilder result = new StringBuilder();
+
+		// 명령어 수행
+		for (char c : arr) {
+			// 뒤집는건 방향만 바꾸면 됨
+			if (c == 'R') {
+				direction = !direction;
+			} else {
+
+				// 비어있으면 에러
+				if (deque.isEmpty()) {
+					return "error\n";
+				}
+
+				if (direction) {
+					deque.pollFirst();
+				} else {
+					deque.pollLast();
+				}
+			}
+		}
+
+		// 결과 넣기
+		result.append("[");
+
+		if (!deque.isEmpty()) {
+			if (direction) {
+				result.append(deque.pollFirst());
+				while (!deque.isEmpty()) {
+					result.append("," + deque.pollFirst());
+				}
+			} else {
+				result.append(deque.pollLast());
+				while (!deque.isEmpty()) {
+					result.append("," + deque.pollLast());
+				}
+			}
+		}
+
+		result.append("]\n");
+
+		return result.toString();
+	}
+
+	public static void p_5430() throws IOException {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder result = new StringBuilder();
+		int count = Integer.parseInt(br.readLine());
+
+		for (int i = 0; i < count; i++) {
+			// 입력값들
+			char[] arr = br.readLine().toCharArray(); // 명령어
+			int nums = Integer.parseInt(br.readLine()); // 원소 개수
+			StringTokenizer st = new StringTokenizer(br.readLine(), "[],"); // 원소들
+			Deque<Integer> deque = new ArrayDeque<>();
+
+			// 덱에 넣기
+			for (int j = 0; j < nums; j++) {
+				deque.offerLast(Integer.parseInt(st.nextToken()));
+			}
+
+			// ac함수 실행
+			result.append(ac(arr, deque));
+
+		}
+
+		System.out.println(result.toString());
+
+		return;
+
+	}
+
+	public static void main(String[] args) throws IOException {
+		// public static void main(String[] args) {
 		// p_18258();
 		// p_2164();
 		// p_11866();
 		// p_1996();
 		// p_10866();
-		p_1021();
+		// p_1021();
+		p_5430();
 
 		return;
 	}
