@@ -172,10 +172,43 @@ public class Step20 {
 		return;
 	}
 
+	// 곱셈
+	public static int a, b, c;
+
+	public static long pow(int num, int exponent) {
+
+		// 지수가 1이라면 그 숫자 그대로
+		if (exponent == 1) {
+			return num % c;
+		}
+
+		long result = pow(num, exponent / 2);
+
+		// 지수가 홀수라면 한번 더 곱해주기
+		if (exponent % 2 == 1) {
+			return (result * result % c) * num % c;
+		}
+
+		return result * result % c;
+	}
+
+	public static void p_1629() {
+		Scanner sc = new Scanner(System.in);
+		a = sc.nextInt();
+		b = sc.nextInt();
+		c = sc.nextInt();
+		sc.close();
+
+		System.out.println(pow(a, b));
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_2630();
 		// p_1992();
-		p_1780();
+		// p_1780();
+		p_1629();
 		return;
 	}
 
