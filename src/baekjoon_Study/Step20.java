@@ -106,9 +106,76 @@ public class Step20 {
 		return;
 	}
 
+	// 종이의 개수
+	public static int[][] paper;
+	public static int minus = 0;
+	public static int zero = 0;
+	public static int plus = 0;
+
+	public static void cut_2(int row, int col, int size) {
+		int compare = paper[row][col];
+
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				if (paper[i + row][j + col] != compare) {
+					size /= 3;
+
+					cut_2(row, col, size); // (0,0)
+					cut_2(row, col + size, size); // (0,1)
+					cut_2(row, col + (size * 2), size); // (0,2)
+
+					cut_2(row + size, col, size); // (1,0)
+					cut_2(row + size, col + size, size); // (1,1)
+					cut_2(row + size, col + (size * 2), size); // (1,2)
+
+					cut_2(row + (size * 2), col, size); // (2,0)
+					cut_2(row + (size * 2), col + size, size); // (2,1)
+					cut_2(row + (size * 2), col + (size * 2), size); // (2,2)
+
+					return;
+				}
+			}
+		}
+
+		switch (compare) {
+		case -1:
+			minus++;
+			break;
+		case 0:
+			zero++;
+			break;
+		case 1:
+			plus++;
+			break;
+		}
+
+		return;
+	}
+
+	public static void p_1780() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		paper = new int[n][n];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				paper[i][j] = sc.nextInt();
+			}
+		}
+
+		sc.close();
+
+		cut_2(0, 0, n);
+
+		System.out.println(minus + "\n" + zero + "\n" + plus);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_2630();
-		p_1992();
+		// p_1992();
+		p_1780();
 		return;
 	}
 
