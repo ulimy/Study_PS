@@ -175,7 +175,7 @@ public class Step20 {
 	// 곱셈
 	public static int a, b, c;
 
-	public static long pow(int num, int exponent) {
+	public static long pow(long num, int exponent) {
 
 		// 지수가 1이라면 그 숫자 그대로
 		if (exponent == 1) {
@@ -204,11 +204,77 @@ public class Step20 {
 		return;
 	}
 
+	// 이항계수
+	/*
+	 * 이항계수 => 순서를 고려하지 않는 조합 ( nCk ) -> n! / ((n-k)! * k!)
+	 * 
+	 * 페르마의 소 정리 a^(p-1) = 1(mod p) -> a * a^(p-2) = 1(mod p) --> a의 역원 :
+	 * a^(p-2) (mod p)
+	 * 
+	 * a*(b^-1)%p = ( a * b^(p-2) ) % p = ( ( a % p ) * ( b^(p-2) % p ) ) % p
+	 * 
+	 * a-> n! b-> (n-k)! * k!
+	 * 
+	 */
+
+	// 팩토리얼
+	public static long factorial(long num) {
+		long result = 1;
+
+		while (num > 1) {
+			result = (result * num) % 1000000007;
+			num--;
+		}
+
+		return result;
+
+	}
+
+	// 곱셈
+	public static long pow_11401(long base, long exponent) {
+
+		int p = 1000000007;
+
+		// 지수가 1이라면 그 숫자 그대로
+		if (exponent == 1) {
+			return base % p;
+		}
+
+		long result = pow_11401(base, exponent / 2);
+
+		// 지수가 홀수라면 한번 더 곱해주기
+		if (exponent % 2 == 1) {
+			return (result * result % p) * base % p;
+		}
+
+		return result * result % p;
+	}
+
+	public static void p_11401() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int k = sc.nextInt();
+		sc.close();
+
+		int p = 1000000007;
+
+		// 팩토리얼 구하기
+		long a = factorial(n);
+		long b = (factorial(n - k) * factorial(k)) % p;
+
+		long result = (a % p) * (pow_11401(b, p - 2) % p) % p;
+
+		System.out.println(result);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_2630();
 		// p_1992();
 		// p_1780();
-		p_1629();
+		// p_1629();
+		p_11401();
 		return;
 	}
 
