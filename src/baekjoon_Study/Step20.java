@@ -323,13 +323,84 @@ public class Step20 {
 		return;
 	}
 
+	// 행렬 제곱
+	public static int n;
+
+	public static int[][] matrix_pow(int[][] arr, long b) {
+
+		// 지수가 1
+		if (b == 1) {
+			return arr;
+		}
+
+		int[][] temp = matrix_pow(arr, b / 2);
+
+		// arr * arr
+		int[][] result = matrix_multiply(temp, temp);
+
+		// 지수가 홀수라면 한번 더 result*arr
+		if (b % 2 == 1) {
+			result = matrix_multiply(result, arr);
+		}
+
+		return result;
+
+	}
+
+	public static int[][] matrix_multiply(int[][] arr_1, int[][] arr_2) {
+
+		int[][] result = new int[n][n];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				int sum = 0;
+				for (int k = 0; k < n; k++) {
+					sum = (sum + (arr_1[i][k] * arr_2[k][j]) % 1000) % 1000;
+				}
+				result[i][j] = sum;
+			}
+		}
+
+		return result;
+	}
+
+	public static void p_10830() {
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		long b = sc.nextLong();
+
+		int[][] arr = new int[n][n];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				arr[i][j] = sc.nextInt() % 1000;
+			}
+		}
+
+		int[][] result = matrix_pow(arr, b);
+
+		StringBuilder print = new StringBuilder();
+
+		for (int i = 0; i < n; i++) {
+			String s = Arrays.toString(result[i]);
+			print.append(s.substring(1, s.length() - 1).replace(",", "") + "\n");
+		}
+
+		System.out.println(print.toString());
+
+		sc.close();
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_2630();
 		// p_1992();
 		// p_1780();
 		// p_1629();
 		// p_11401();
-		p_2740();
+		// p_2740();
+		p_10830();
 		return;
 	}
 
