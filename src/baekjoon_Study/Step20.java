@@ -1,5 +1,6 @@
 package baekjoon_Study;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 // 분할정복
@@ -269,12 +270,66 @@ public class Step20 {
 		return;
 	}
 
+	// 행렬 곱셈
+	public static void p_2740() {
+		Scanner sc = new Scanner(System.in);
+
+		// 행렬 A
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[][] a = new int[n][m];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				a[i][j] = sc.nextInt();
+			}
+		}
+
+		// 행렬 B
+		sc.nextInt();
+		int k = sc.nextInt();
+		int[][] b = new int[m][k];
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < k; j++) {
+				b[i][j] = sc.nextInt();
+			}
+		}
+
+		sc.close();
+
+		// 곱셈
+		int[][] result = new int[n][k];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < k; j++) {
+
+				int sum = 0;
+				for (int x = 0; x < m; x++) {
+					sum += a[i][x] * b[x][j];
+				}
+				result[i][j] = sum;
+
+			}
+		}
+
+		StringBuilder print = new StringBuilder();
+
+		for (int i = 0; i < n; i++) {
+			String s = Arrays.toString(result[i]);
+			print.append(s.substring(1, s.length() - 1).replace(",", "") + "\n");
+		}
+
+		System.out.println(print.toString());
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_2630();
 		// p_1992();
 		// p_1780();
 		// p_1629();
-		p_11401();
+		// p_11401();
+		p_2740();
 		return;
 	}
 
