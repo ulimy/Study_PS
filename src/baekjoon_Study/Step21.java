@@ -175,10 +175,56 @@ public class Step21 {
 		return;
 	}
 
+	// 나무 자르기
+	public static void p_2805() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[] tree = new int[n];
+
+		int start = 0;
+		int end = 0;
+
+		for (int i = 0; i < n; i++) {
+			tree[i] = sc.nextInt();
+			end = Math.max(tree[i], end);
+		}
+
+		sc.close();
+
+		while (start < end) {
+			int mid = (start + end) / 2;
+
+			long get = 0; // 가질 수 있는 나무
+
+			for (int t : tree) {
+				// 자르는 값보다 큰 나무만 가질 수 있음
+				if (t > mid) {
+					get += t - mid;
+				}
+			}
+
+			// 가져가려는 길이보다 작으면 더 작은 단위로 잘라야 함
+			if (get < m) {
+				end = mid;
+			}
+
+			// 가져가려는 길이보다 크면 더 큰 단위가 가능한지 보기
+			else {
+				start = mid + 1;
+			}
+		}
+
+		System.out.println(start - 1);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1920();
 		// p_10816();
-		p_1654();
+		// p_1654();
+		p_2805();
 		return;
 	}
 
