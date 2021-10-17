@@ -132,9 +132,53 @@ public class Step21 {
 
 	}
 
+	// 랜선 자르기
+	public static void p_1654() {
+		Scanner sc = new Scanner(System.in);
+		int k = sc.nextInt();
+		int n = sc.nextInt();
+		int[] arr = new int[k];
+
+		long start = 0;
+		// mid가 0으로 나눠지거나 start와 end가 같을 경우를 위해 end 하나 높여주기
+		// 입력값 최대가 정수 최대라서 1 더하면 정수 넘어갈수도 있으므로 long으로 선언
+		long end = arr[arr.length - 1] + 1;
+
+		for (int i = 0; i < k; i++) {
+			arr[i] = sc.nextInt();
+			end = Math.max(arr[i], end);
+		}
+
+		sc.close();
+
+		end++;
+
+		while (start < end) {
+			long mid = (start + end) / 2;
+
+			long count = 0; // 자를 수 있는 개수
+
+			for (int a : arr) {
+				count += a / mid;
+			}
+
+			if (count < n) { // n보다 작다면 더 작은 단위로 잘라야 함
+				end = mid;
+			} else { // n보다 크다면 더 큰 단위로 잘라도 됨!
+				start = mid + 1;
+			}
+		}
+
+		// end를 하나 높였으므로 결과는 하나 낮추기
+		System.out.println(start - 1);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1920();
-		p_10816();
+		// p_10816();
+		p_1654();
 		return;
 	}
 
