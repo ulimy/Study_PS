@@ -67,9 +67,74 @@ public class Step21 {
 		return;
 	}
 
-	public static void main(String[] args) {
-		p_1920();
+	// 숫자카드 2
+	public static void p_10816() {
+		Scanner sc = new Scanner(System.in);
 
+		int n = sc.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = sc.nextInt();
+		}
+
+		int m = sc.nextInt();
+		int[] targets = new int[m];
+		for (int i = 0; i < m; i++) {
+			targets[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		Arrays.sort(arr);
+		StringBuilder result = new StringBuilder();
+
+		for (int target : targets) {
+			int lower; // target이 들어갈 수 있는 가장 작은 인덱스
+			int upper; // target이 들어갈 수 있는 가장 큰 인덱스
+
+			// lower 구하기
+			int start = 0;
+			int end = n; // target이 들어 갈 위치를 찾는 것이므로 n까지
+
+			while (start < end) {
+				int mid = (start + end) / 2;
+				if (arr[mid] >= target) {
+					end = mid; // 이 위치일 수도 있으므로 mid도 포함
+				} else {
+					start = mid + 1; // target과 다르므로 mid는 포함X
+				}
+			}
+
+			lower = start;
+
+			// upper 구하기
+			start = 0;
+			end = n;
+
+			while (start < end) {
+				int mid = (start + end) / 2;
+				if (arr[mid] > target) {
+					end = mid;
+				} else {
+					start = mid + 1;
+				}
+			}
+
+			upper = start;
+
+			result.append((upper - lower) + " ");
+
+		}
+
+		System.out.println(result.toString());
+
+		return;
+
+	}
+
+	public static void main(String[] args) {
+		// p_1920();
+		p_10816();
 		return;
 	}
 
