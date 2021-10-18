@@ -220,11 +220,60 @@ public class Step21 {
 		return;
 	}
 
+	// 공유기 설치
+	public static void p_2110() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int c = sc.nextInt();
+		int[] house = new int[n];
+
+		for (int i = 0; i < n; i++) {
+			house[i] = sc.nextInt();
+		}
+
+		sc.close();
+
+		Arrays.sort(house);
+
+		int start = 1; // 최소
+		int end = house[n - 1] - house[0]; // 최대
+
+		while (start <= end) {
+			int mid = (start + end) / 2;
+
+			// 최대거리를 위해 첫 집에는 당연히 설치
+			int count = 1; // 설치된 공유기 개수
+			int pre = house[0]; // 이전에 설치된 곳의 좌표
+
+			for (int i = 1; i < n; i++) {
+				int dist = house[i] - pre;
+				// 기준치 이상인 곳에만 설치 가능
+				if (dist >= mid) {
+					count++;
+					pre = house[i];
+				}
+			}
+
+			// c보다 크다면 간격 넓혀도 됨!
+			if (count >= c) {
+				start = mid + 1;
+			} else {
+				end = mid - 1;
+			}
+
+		}
+
+		System.out.println(start - 1);
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_1920();
 		// p_10816();
 		// p_1654();
-		p_2805();
+		// p_2805();
+		p_2110();
 		return;
 	}
 
