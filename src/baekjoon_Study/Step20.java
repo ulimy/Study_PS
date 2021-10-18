@@ -393,6 +393,72 @@ public class Step20 {
 		return;
 	}
 
+	// 피보나치
+
+	// [  Fn  ] = [ 1 1 ] * [ Fn-1 ] = [ 1 1 ]^2 * [ Fn-2 ] ...
+	// [ Fn-1 ]   [ 1 0 ]   [ Fn-2 ]   [ 1 0 ]     [ Fn-3 ]
+
+	// 결국!
+	// [  Fn  ] = [ 1 1 ]^ n-1 * [ F1 ]
+	// [ Fn-1 ]   [ 1 0 ]        [ F0 ]
+
+	public static long[][] arr = { { 1, 1 }, { 1, 0 } };
+
+	public static long[][] pow_1110(long n) {
+
+		if (n == 1) {
+			return new long[][] { { 1, 1 }, { 1, 0 } };
+		}
+
+		long[][] result = new long[2][2];
+		long[][] temp = pow_1110(n / 2);
+
+		// 제곱
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 2; j++) {
+				for (int k = 0; k < 2; k++) {
+					result[i][j] += (temp[i][k] * temp[k][j]);
+				}
+				result[i][j] %= 1000000007;
+			}
+		}
+
+		// 홀수라면 한번 더 곱하기
+		if (n % 2 == 1) {
+
+			temp = result;
+			result = new long[2][2]; // result 초기화
+
+			for (int i = 0; i < 2; i++) {
+				for (int j = 0; j < 2; j++) {
+					for (int k = 0; k < 2; k++) {
+						result[i][j] += (temp[i][k] * arr[k][j]);
+					}
+					result[i][j] %= 1000000007;
+				}
+			}
+		}
+
+		return result;
+
+	}
+
+	public static void p_11444() {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextLong();
+		sc.close();
+
+		// 1이라면 계산할 필요 없음
+		if (n == 1) {
+			System.out.println(1);
+		} else {
+			long[][] result = pow_1110(n - 1);
+			System.out.println(result[0][0]);
+		}
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_2630();
 		// p_1992();
@@ -400,7 +466,8 @@ public class Step20 {
 		// p_1629();
 		// p_11401();
 		// p_2740();
-		p_10830();
+		// p_10830();
+		p_11444();
 		return;
 	}
 
