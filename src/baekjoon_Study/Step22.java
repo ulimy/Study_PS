@@ -1,5 +1,6 @@
 package baekjoon_Study;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -67,9 +68,51 @@ public class Step22 {
 		return;
 	}
 
+	// 절댓값 힙
+	public static void p_11286() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+
+		PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer a, Integer b) {
+				if (Math.abs(a) == Math.abs(b)) { // 절댓값 같으면 오름차순
+					return a - b;
+				} else {
+					return Math.abs(a) - Math.abs(b);
+				}
+			}
+
+		});
+
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < count; i++) {
+			int target = sc.nextInt();
+
+			if (target == 0) {
+				if (pq.isEmpty()) {
+					result.append("0\n");
+				} else {
+					result.append(pq.poll() + "\n");
+				}
+			} else {
+				pq.offer(target);
+			}
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		// p_11279();
-		p_1927();
+		// p_1927();
+		p_11286();
 
 		return;
 	}
