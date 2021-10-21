@@ -36,8 +36,40 @@ public class Step22 {
 		return;
 	}
 
+	// 최소 힙
+	public static void p_1927() {
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+
+		// 기본갑이 오름차순
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < count; i++) {
+			int target = sc.nextInt();
+
+			if (target == 0) {
+				if (pq.isEmpty()) {
+					result.append("0\n");
+				} else {
+					result.append(pq.poll() + "\n");
+				}
+			} else {
+				pq.offer(target);
+			}
+
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
 	public static void main(String[] args) {
-		p_11279();
+		// p_11279();
+		p_1927();
 
 		return;
 	}
