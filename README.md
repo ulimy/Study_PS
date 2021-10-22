@@ -92,6 +92,7 @@
  20\. [분할정복](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step20.java)  
  21\. [이분탐색](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step21.java)  
  22\. [우선순위 큐](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step22.java)  
+ 24\. [DFS와 BFS](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step24.java)  
 
  ---
  ### [BAEKJOON online judge](https://www.acmicpc.net/)
