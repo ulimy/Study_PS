@@ -249,10 +249,98 @@ public class Step24 {
 
 	}
 
+	// 유기농 배추
+	public static void p_1012() {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < t; i++) {
+			int m = sc.nextInt();
+			int n = sc.nextInt();
+			int[][] ground = new int[m][n];
+
+			// 배추 위치
+			int num = sc.nextInt();
+			for (int j = 0; j < num; j++) {
+				ground[sc.nextInt()][sc.nextInt()] = 1;
+			}
+
+			result.append(bfs_1012(m, n, ground) + "\n");
+
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	public static int bfs_1012(int m, int n, int[][] ground) {
+		int result = 0;
+
+		// ground가 0과 1 뿐이므로 visited 대신 ground를 0으로 바꿔주기
+		Queue<int[]> queue = new LinkedList<>();
+
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				// 1이라면 bfs시작
+				if (ground[i][j] == 1) {
+
+					ground[i][j] = 0;
+					queue.offer(new int[] { i, j });
+					result++;
+
+					while (!queue.isEmpty()) {
+						int[] target = queue.poll();
+
+						// 상
+						if (target[1] + 1 >= 0 && target[1] + 1 < n) {
+							if (ground[target[0]][target[1] + 1] == 1) {
+								queue.offer(new int[] { target[0], target[1] + 1 });
+								ground[target[0]][target[1] + 1] = 0;
+							}
+						}
+
+						// 하
+						if (target[1] - 1 >= 0 && target[1] - 1 < n) {
+							if (ground[target[0]][target[1] - 1] == 1) {
+								queue.offer(new int[] { target[0], target[1] - 1 });
+								ground[target[0]][target[1] - 1] = 0;
+							}
+						}
+
+						// 좌
+						if (target[0] - 1 >= 0 && target[0] - 1 < m) {
+							if (ground[target[0] - 1][target[1]] == 1) {
+								queue.offer(new int[] { target[0] - 1, target[1] });
+								ground[target[0] - 1][target[1]] = 0;
+							}
+						}
+
+						// 우
+						if (target[0] + 1 >= 0 && target[0] + 1 < m) {
+							if (ground[target[0] + 1][target[1]] == 1) {
+								queue.offer(new int[] { target[0] + 1, target[1] });
+								ground[target[0] + 1][target[1]] = 0;
+							}
+						}
+
+					}
+
+				}
+			}
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
 		// p_2606();
-		p_2667();
+		// p_2667();
+		p_1012();
 
 		return;
 	}
