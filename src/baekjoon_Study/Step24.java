@@ -1,7 +1,10 @@
 package baekjoon_Study;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -106,6 +109,8 @@ public class Step24 {
 
 		System.out.println(bfs_2606(computer, lines));
 
+		return;
+
 	}
 
 	public static int bfs_2606(int n, int[][] lines) {
@@ -138,9 +143,116 @@ public class Step24 {
 		return result;
 	}
 
+	// 단지 번호 붙이기
+	public static void p_2667() {
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.nextLine());
+		int[][] houses = new int[n][n];
+
+		for (int i = 0; i < n; i++) {
+			char[] input = sc.nextLine().toCharArray();
+			for (int j = 0; j < n; j++) {
+				houses[i][j] = input[j] - '0';
+			}
+		}
+
+		sc.close();
+
+		bfs_2667(n, houses);
+
+		return;
+	}
+
+	public static void bfs_2667(int n, int[][] houses) {
+		int count = 0; // 단지 수
+		List<Integer> list = new ArrayList<>();
+
+		boolean[][] visited = new boolean[n][n];
+		Queue<int[]> queue = new LinkedList<>();
+
+		// 방문배열 초기화
+		for (boolean[] arr : visited) {
+			Arrays.fill(arr, false);
+		}
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+
+				// 집이 존재하고 방문한 적이 없다면 bfs 시작
+				if (houses[i][j] == 1 && !visited[i][j]) {
+
+					count++; // 단지수 증가
+					int house = 1; // 단지 내 집의 수
+
+					// 초기화
+					queue.offer(new int[] { i, j });
+					visited[i][j] = true;
+
+					while (!queue.isEmpty()) {
+						int[] target = queue.poll();
+
+						// 상
+						if (target[1] + 1 >= 0 && target[1] + 1 < n) { // 범위 확인
+							if (houses[target[0]][target[1] + 1] == 1 && !visited[target[0]][target[1] + 1]) {
+								visited[target[0]][target[1] + 1] = true;
+								queue.offer(new int[] { target[0], target[1] + 1 });
+								house++;
+							}
+						}
+
+						// 하
+						if (target[1] - 1 >= 0 && target[1] - 1 < n) { // 범위 확인
+							if (houses[target[0]][target[1] - 1] == 1 && !visited[target[0]][target[1] - 1]) {
+								visited[target[0]][target[1] - 1] = true;
+								queue.offer(new int[] { target[0], target[1] - 1 });
+								house++;
+							}
+						}
+
+						// 좌
+						if (target[0] - 1 >= 0 && target[0] - 1 < n) { // 범위 확인
+							if (houses[target[0] - 1][target[1]] == 1 && !visited[target[0] - 1][target[1]]) {
+								visited[target[0] - 1][target[1]] = true;
+								queue.offer(new int[] { target[0] - 1, target[1] });
+								house++;
+							}
+						}
+
+						// 우
+						if (target[0] + 1 >= 0 && target[0] + 1 < n) { // 범위 확인
+							if (houses[target[0] + 1][target[1]] == 1 && !visited[target[0] + 1][target[1]]) {
+								visited[target[0] + 1][target[1]] = true;
+								queue.offer(new int[] { target[0] + 1, target[1] });
+								house++;
+							}
+						}
+					}
+
+					list.add(house);
+
+				}
+
+			}
+		}
+
+		Collections.sort(list);
+
+		StringBuilder result = new StringBuilder(count + "\n");
+
+		for (int i : list) {
+			result.append(i + "\n");
+		}
+
+		System.out.println(result.toString());
+
+		return;
+
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
-		p_2606();
+		// p_2606();
+		p_2667();
 
 		return;
 	}
