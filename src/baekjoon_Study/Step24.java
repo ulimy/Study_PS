@@ -475,13 +475,242 @@ public class Step24 {
 		return max - 1;
 	}
 
+	// 토마토 - 3차원 ------실패--------
+	public static void p_7596() {
+		Scanner sc = new Scanner(System.in);
+		int m = sc.nextInt();
+		int n = sc.nextInt();
+		int h = sc.nextInt();
+		int[][][] tomato = new int[h][n][m];
+
+		Queue<int[]> queue = new LinkedList<>();
+
+		for (int k = 0; k < h; k++) {
+			int[][] arr = new int[n][m];
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < m; j++) {
+					arr[i][j] = sc.nextInt();
+					if (arr[i][j] == 1) {
+						queue.offer(new int[] { k, i, j });
+					}
+				}
+			}
+			tomato[k] = arr;
+		}
+
+		sc.close();
+
+		System.out.println(bfs_7569(h, n, m, tomato, queue));
+
+		return;
+
+	}
+
+	public static int bfs_7569(int h, int n, int m, int[][][] tomato, Queue<int[]> queue) {
+
+		int[] x = { 0, 0, -1, 1 }; // 앞뒤오왼 x 방문
+		int[] y = { 1, -1, 0, 0 }; // 앞뒤오왼 y 방문
+
+		while (!queue.isEmpty()) {
+			int[] cur = queue.poll();
+
+			// 상하좌우
+			for (int i = 0; i < 4; i++) {
+				int index_x = cur[1] + x[i];
+				int index_y = cur[2] + y[i];
+
+				// 범위 확인
+				if (index_x < 0 || index_y < 0 || index_x >= n || index_y >= m) {
+					continue;
+				}
+
+				// 없거나 이미 익었다면 패스
+				if (tomato[cur[0]][index_x][index_y] != 0) {
+					continue;
+				}
+
+				// 큐에 넣고 방문처리
+				queue.offer(new int[] { cur[0], index_x, index_y });
+				tomato[cur[0]][index_x][index_y] = tomato[cur[0]][cur[1]][cur[2]] + 1;
+
+			}
+
+			// 위, 아래
+			int z = cur[0] - 1;
+
+			for (int i = 0; i < 2; i++) {
+				// 범위확인
+				if (z < 0 || z >= h) {
+					continue;
+				}
+
+				// 없거나 이미 익었다면 패스
+				if (tomato[z][cur[1]][cur[2]] != 0) {
+					continue;
+				}
+
+				// 큐에 넣고 방문처리
+				queue.offer(new int[] { z, cur[1], cur[2] });
+				tomato[z][cur[1]][cur[2]] = tomato[cur[0]][cur[1]][cur[2]] + 1;
+
+				z += 2;
+			}
+
+		}
+
+		int max = 0;
+
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < n; j++) {
+				for (int k = 0; k < m; k++) {
+					if (tomato[i][j][k] == 0) { // 익지 않은 토마토 존재
+						return -1;
+					}
+					max = Math.max(max, tomato[i][j][k]);
+				}
+			}
+		}
+
+		// 첫날은 빼기
+		return max - 1;
+	}
+
+	// 숨바꼭질
+	public static void p_1697() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int k = sc.nextInt();
+		sc.close();
+
+		if (n == k) { // 이미 같은 경우
+			System.out.println(0);
+		} else {
+			System.out.println(bfs_1697(n, k));
+		}
+
+		return;
+	}
+
+	public static int bfs_1697(int n, int k) {
+
+		int[] arr = new int[100001];
+		Queue<Integer> queue = new LinkedList<>();
+
+		// 초기화
+		Arrays.fill(arr, -1);
+		arr[n] = 0;
+		queue.offer(n);
+
+		while (!queue.isEmpty()) {
+			int cur = queue.poll();
+
+			for (int index : new int[] { cur - 1, cur + 1, cur * 2 }) {
+
+				// 찾았다면 바로 리턴
+				if (index == k) {
+					return arr[cur] + 1;
+				}
+
+				// 범위 확인
+				if (index < 0 || index >= arr.length) {
+					continue;
+				}
+
+				// 방문여부 확인
+				if (arr[index] != -1) {
+					continue;
+				}
+
+				// 큐에 넣고 방문처리
+				queue.offer(index);
+				arr[index] = arr[cur] + 1;
+			}
+		}
+
+		return arr[k];
+	}
+
+	// 체스
+	public static void p_7562() {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < t; i++) {
+			int size = sc.nextInt();
+			int[] start = new int[] { sc.nextInt(), sc.nextInt() };
+			int[] end = new int[] { sc.nextInt(), sc.nextInt() };
+
+			if (start[0] == end[0] && start[1] == end[1]) {
+				result.append("0\n");
+			} else {
+				result.append(bfs_7562(size, start, end) + "\n");
+			}
+
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	public static int bfs_7562(int size, int[] start, int[] end) {
+
+		int[][] move = { { -2, 1 }, { -1, 2 }, { 1, 2 }, { 2, 1 }, { 2, -1 }, { 1, -2 }, { -1, -2 }, { -2, -1 } };
+		int[][] chess = new int[size][size];
+
+		Queue<int[]> queue = new LinkedList<>();
+
+		// 초기화
+		for (int i = 0; i < size; i++) {
+			Arrays.fill(chess[i], -1);
+		}
+		chess[start[0]][start[1]] = 0;
+		queue.offer(start);
+
+		while (!queue.isEmpty()) {
+			int[] cur = queue.poll();
+
+			for (int[] m : move) {
+				int x = cur[0] + m[0];
+				int y = cur[1] + m[1];
+
+				// 범위 확인
+				if (x < 0 || x >= size || y < 0 || y >= size) {
+					continue;
+				}
+
+				// 도착했다면 바로 리턴
+				if (x == end[0] && y == end[1]) {
+					return chess[cur[0]][cur[1]] + 1;
+				}
+
+				// 방문 확인
+				if (chess[x][y] != -1) {
+					continue;
+				}
+
+				// 큐에 넣고 방문처리
+				queue.offer(new int[] { x, y });
+				chess[x][y] = chess[cur[0]][cur[1]] + 1;
+			}
+		}
+
+		return chess[end[0]][end[1]];
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
 		// p_2606();
 		// p_2667();
 		// p_1012();
 		// p_2178();
-		p_7576();
+		// p_7576();
+		// p_7596();
+		// p_1697();
+		p_7562();
 
 		return;
 	}
