@@ -406,12 +406,82 @@ public class Step24 {
 		return dist[n - 1][m - 1];
 	}
 
+	// 토마토
+	public static void p_7576() {
+		Scanner sc = new Scanner(System.in);
+		int m = sc.nextInt();
+		int n = sc.nextInt();
+		int[][] tomato = new int[n][m];
+
+		Queue<int[]> queue = new LinkedList<>();
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				tomato[i][j] = sc.nextInt();
+				if (tomato[i][j] == 1) {
+					queue.offer(new int[] { i, j });
+				}
+			}
+		}
+
+		sc.close();
+
+		System.out.println(bfs_7576(n, m, tomato, queue));
+
+		return;
+
+	}
+
+	public static int bfs_7576(int n, int m, int[][] tomato, Queue<int[]> queue) {
+		int[] x = { 0, 0, -1, 1 }; // 상하좌우 x 방문
+		int[] y = { 1, -1, 0, 0 }; // 상하좌우 y 방문
+
+		while (!queue.isEmpty()) {
+			int[] cur = queue.poll();
+
+			for (int i = 0; i < 4; i++) {
+				int index_x = cur[0] + x[i];
+				int index_y = cur[1] + y[i];
+
+				// 범위 확인
+				if (index_x < 0 || index_y < 0 || index_x >= n || index_y >= m) {
+					continue;
+				}
+
+				// 없거나 이미 익었다면 패스
+				if (tomato[index_x][index_y] != 0) {
+					continue;
+				}
+
+				// 큐에 넣고 방문처리
+				queue.offer(new int[] { index_x, index_y });
+				tomato[index_x][index_y] = tomato[cur[0]][cur[1]] + 1;
+
+			}
+		}
+
+		int max = 0;
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				if (tomato[i][j] == 0) { // 익지 않은 토마토 존재
+					return -1;
+				}
+				max = Math.max(max, tomato[i][j]);
+			}
+		}
+
+		// 첫날은 빼기
+		return max - 1;
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
 		// p_2606();
 		// p_2667();
 		// p_1012();
-		p_2178();
+		// p_2178();
+		p_7576();
 
 		return;
 	}
