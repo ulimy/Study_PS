@@ -475,7 +475,7 @@ public class Step24 {
 		return max - 1;
 	}
 
-	// 토마토 - 3차원 ------실패--------
+	// 토마토 - 3차원
 	public static void p_7596() {
 		Scanner sc = new Scanner(System.in);
 		int m = sc.nextInt();
@@ -508,54 +508,31 @@ public class Step24 {
 
 	public static int bfs_7569(int h, int n, int m, int[][][] tomato, Queue<int[]> queue) {
 
-		int[] x = { 0, 0, -1, 1 }; // 앞뒤오왼 x 방문
-		int[] y = { 1, -1, 0, 0 }; // 앞뒤오왼 y 방문
+		// 상하좌우위아래 이동
+		int[][] move = { { 0, 0, 1 }, { 0, 0, -1 }, { 0, 1, 0 }, { 0, -1, 0 }, { 1, 0, 0 }, { -1, 0, 0 } };
 
 		while (!queue.isEmpty()) {
 			int[] cur = queue.poll();
 
-			// 상하좌우
-			for (int i = 0; i < 4; i++) {
-				int index_x = cur[1] + x[i];
-				int index_y = cur[2] + y[i];
+			for (int[] mo : move) {
+
+				int x = cur[0] + mo[0];
+				int y = cur[1] + mo[1];
+				int z = cur[2] + mo[2];
 
 				// 범위 확인
-				if (index_x < 0 || index_y < 0 || index_x >= n || index_y >= m) {
+				if (x < 0 || y < 0 || z < 0 || x >= h || y >= n || z >= m) {
 					continue;
 				}
 
 				// 없거나 이미 익었다면 패스
-				if (tomato[cur[0]][index_x][index_y] != 0) {
+				if (tomato[x][y][z] != 0) {
 					continue;
 				}
 
-				// 큐에 넣고 방문처리
-				queue.offer(new int[] { cur[0], index_x, index_y });
-				tomato[cur[0]][index_x][index_y] = tomato[cur[0]][cur[1]][cur[2]] + 1;
-
+				queue.offer(new int[] { x, y, z });
+				tomato[x][y][z] = tomato[cur[0]][cur[1]][cur[2]] + 1;
 			}
-
-			// 위, 아래
-			int z = cur[0] - 1;
-
-			for (int i = 0; i < 2; i++) {
-				// 범위확인
-				if (z < 0 || z >= h) {
-					continue;
-				}
-
-				// 없거나 이미 익었다면 패스
-				if (tomato[z][cur[1]][cur[2]] != 0) {
-					continue;
-				}
-
-				// 큐에 넣고 방문처리
-				queue.offer(new int[] { z, cur[1], cur[2] });
-				tomato[z][cur[1]][cur[2]] = tomato[cur[0]][cur[1]][cur[2]] + 1;
-
-				z += 2;
-			}
-
 		}
 
 		int max = 0;
@@ -708,9 +685,9 @@ public class Step24 {
 		// p_1012();
 		// p_2178();
 		// p_7576();
-		// p_7596();
+		p_7596();
 		// p_1697();
-		p_7562();
+		// p_7562();
 
 		return;
 	}
