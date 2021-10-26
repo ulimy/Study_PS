@@ -336,11 +336,82 @@ public class Step24 {
 		return result;
 	}
 
+	// 미로탐색
+	public static void p_2178() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[][] maze = new int[n][m];
+
+		sc.nextLine();
+		for (int i = 0; i < n; i++) {
+			String s = sc.nextLine();
+			int index = 0;
+			for (char c : s.toCharArray()) {
+				maze[i][index] = c - '0';
+				index++;
+			}
+		}
+
+		sc.close();
+
+		System.out.println(bfs_2178(n, m, maze));
+
+		return;
+	}
+
+	public static int bfs_2178(int n, int m, int[][] maze) {
+
+		int[][] dist = new int[n][m];
+		Queue<int[]> queue = new LinkedList<>();
+		int[] x = { 0, 0, -1, 1 }; // 상하좌우 x 방문
+		int[] y = { 1, -1, 0, 0 }; // 상하좌우 y 방문
+
+		// 초기화
+		for (int i = 0; i < n; i++) {
+			Arrays.fill(dist[i], -1);
+		}
+		dist[0][0] = 1;
+		queue.offer(new int[] { 0, 0 });
+
+		while (!queue.isEmpty()) {
+			int[] cur = queue.poll();
+
+			// 상하좌우 방문
+			for (int i = 0; i < 4; i++) {
+				int index_x = cur[0] + x[i];
+				int index_y = cur[1] + y[i];
+
+				// 범위 확인
+				if (index_x < 0 || index_y < 0 || index_x >= n || index_y >= m) {
+					continue;
+				}
+
+				// 이동 가능여부 확인
+				if (maze[index_x][index_y] == 0) {
+					continue;
+				}
+
+				// 방문여부 확인
+				if (dist[index_x][index_y] > -1) {
+					continue;
+				}
+
+				// 큐에 넣고 방문 처리
+				queue.offer(new int[] { index_x, index_y });
+				dist[index_x][index_y] = dist[cur[0]][cur[1]] + 1;
+			}
+		}
+
+		return dist[n - 1][m - 1];
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
 		// p_2606();
 		// p_2667();
-		p_1012();
+		// p_1012();
+		p_2178();
 
 		return;
 	}
