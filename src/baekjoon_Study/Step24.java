@@ -775,6 +775,94 @@ public class Step24 {
 		return -1;
 	}
 
+	// 이분 그래프
+	public static void p_1707() {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt(); // testcase
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < t; i++) {
+
+			int v = sc.nextInt();
+			int e = sc.nextInt();
+
+			// color 초기화
+			// 색상 정보 0-방문X 1-white 2-black
+			int[] color = new int[v + 1];
+
+			// edges 초기화
+			ArrayList<Integer>[] edges = new ArrayList[v + 1];
+			for (int j = 0; j <= v; j++) {
+				edges[j] = new ArrayList<Integer>();
+			}
+
+			// edge 정보 저장
+			for (int j = 0; j < e; j++) {
+				int x = sc.nextInt();
+				int y = sc.nextInt();
+				edges[x].add(y);
+				edges[y].add(x);
+			}
+
+			// bfs
+			boolean check = bfs_1707(v, color, edges);
+
+			// 결과 저장
+			result.append((check) ? "YES\n" : "NO\n");
+
+		}
+
+		sc.close();
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	public static boolean bfs_1707(int v, int[] color, ArrayList[] edges) {
+
+		Queue<Integer> queue = new LinkedList<>();
+
+		// 전체 정점에 대해서
+		for (int i = 1; i <= v; i++) {
+
+			// 방문하지 않았다면 방문처리하고,queue에 넣고 bfs 시작
+			if (color[i] == 0) {
+				queue.offer(i);
+				color[i] = 1;
+
+				while (!queue.isEmpty()) {
+
+					int target = queue.poll();
+
+					// 연결되어있는 정점들에 대하여
+					for (int j = 0; j < edges[target].size(); j++) {
+
+						int point = (int) edges[target].get(j); // 연결된 점
+
+						// 방문 X
+						if (color[point] == 0) {
+							// 색 칠하고 큐에 넣기
+							color[point] = 3 - color[target];
+							queue.offer(point);
+						}
+
+						// 방문 O
+						else {
+							// target 색과 같다면 이분그래프 아님
+							if (color[point] == color[target]) {
+								return false;
+							}
+						}
+
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
 		// p_2606();
@@ -785,7 +873,8 @@ public class Step24 {
 		// p_7596();
 		// p_1697();
 		// p_7562();
-		p_2206();
+		// p_2206();
+		p_1707();
 
 		return;
 	}
