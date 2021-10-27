@@ -678,6 +678,103 @@ public class Step24 {
 		return chess[end[0]][end[1]];
 	}
 
+	// 벽 부수고 이동하기
+	public static void p_2206() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[][] map = new int[n][m];
+
+		// map정보
+		sc.nextLine();
+		for (int i = 0; i < n; i++) {
+			String s = sc.nextLine();
+			for (int j = 0; j < m; j++) {
+				map[i][j] = s.charAt(j) - '0';
+			}
+		}
+
+		sc.close();
+
+		if (n == 1 && m == 1) { // 이미 도착
+			System.out.println("1");
+		} else {
+			System.out.println(bfs_2206(n, m, map));
+		}
+
+		return;
+	}
+
+	public static int bfs_2206(int n, int m, int[][] map) {
+
+		class Point {
+			int x;
+			int y;
+			int wall; // 1 - 부숨
+			int dist; // 지금까지 소요된 거리
+
+			public Point(int x, int y, int wall, int dist) {
+				super();
+				this.x = x;
+				this.y = y;
+				this.wall = wall;
+				this.dist = dist;
+			}
+		}
+
+		// visited[i][j][0] - 부수지 않고 옴 visited[i][j][1]- 부수고 옴
+		boolean[][][] visited = new boolean[n][m][2];
+		Queue<Point> queue = new LinkedList<>();
+
+		// 초기화
+		visited[0][0][0] = true;
+		visited[0][0][1] = true;
+		queue.offer(new Point(0, 0, 0, 1));
+
+		// 상하좌우 이동
+		int[][] move = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
+
+		while (!queue.isEmpty()) {
+			Point p = queue.poll();
+
+			for (int[] mo : move) {
+				int x = p.x + mo[0];
+				int y = p.y + mo[1];
+
+				// 도착
+				if (x == n - 1 && y == m - 1) {
+					return p.dist + 1;
+				}
+
+				// 범위 확인
+				if (x < 0 || x >= n || y < 0 || y >= m) {
+					continue;
+				}
+
+				// 벽인 경우
+				if (map[x][y] == 1) {
+					// 벽을 부수고 오지 않은 경우만 접근 가능, 방문여부 확인
+					if (p.wall == 0 && !visited[x][y][1]) {
+						queue.offer(new Point(x, y, 1, p.dist + 1));
+						visited[x][y][1] = true;
+					}
+				}
+
+				// 벽이 아닌 경우
+				else {
+					// 벽을 부순 여부 상관없음. 방문 여부만 확인
+					if (!visited[x][y][p.wall]) {
+						queue.offer(new Point(x, y, p.wall, p.dist + 1));
+						visited[x][y][p.wall] = true;
+					}
+				}
+			}
+		}
+
+		// 큐가 끝날때까지 도착 못했다면 실패
+		return -1;
+	}
+
 	public static void main(String[] args) {
 		// p_1260();
 		// p_2606();
@@ -685,9 +782,10 @@ public class Step24 {
 		// p_1012();
 		// p_2178();
 		// p_7576();
-		p_7596();
+		// p_7596();
 		// p_1697();
 		// p_7562();
+		p_2206();
 
 		return;
 	}
