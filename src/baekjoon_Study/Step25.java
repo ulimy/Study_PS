@@ -335,6 +335,7 @@ public class Step25 {
 
 		System.out.println(result.toString());
 
+		return;
 	}
 
 	public static long[] bellmanFord_11687(int n, List<Node>[] city) {
@@ -393,11 +394,78 @@ public class Step25 {
 		return dist;
 	}
 
+	// 플로이드와샬
+	public static void p_11404() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		int n = Integer.parseInt(br.readLine()); // 도시 (정점)
+		int m = Integer.parseInt(br.readLine()); // 버스 (간선)
+
+		int[][] cities = new int[n + 1][n + 1];
+
+		// cities 초기화
+		for (int i = 1; i <= n; i++) {
+			Arrays.fill(cities[i], 100000000);
+			cities[i][i] = 0;
+		}
+
+		// 노선 정보 입력
+		for (int i = 0; i < m; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int start = Integer.parseInt(st.nextToken());
+			int end = Integer.parseInt(st.nextToken());
+			// 노선이 하나가 아닐수도 있으므로 더 작은값 입력
+			cities[start][end] = Math.min(cities[start][end], Integer.parseInt(st.nextToken()));
+		}
+
+		// 경유지
+		for (int i = 1; i <= n; i++) {
+			// 출발지
+			for (int j = 1; j <= n; j++) {
+
+				// 경유지 출발지 같으면 넘어가기
+				if (i == j) {
+					continue;
+				}
+
+				// 도착지
+				for (int k = 1; k <= n; k++) {
+
+					// 경유지 혹은 출발지와 같으면 넘어가기
+					if (i == k || j == k) {
+						continue;
+					}
+
+					// 경유한게 거리가 더 짧으면 갱신
+					if (cities[j][i] + cities[i][k] < cities[j][k]) {
+						cities[j][k] = cities[j][i] + cities[i][k];
+					}
+				}
+			}
+		}
+
+		// 출력
+		StringBuilder result = new StringBuilder();
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= n; j++) {
+				result.append((cities[i][j] == 100000000) ? 0 : cities[i][j]);
+				result.append(" ");
+			}
+			result.append("\n");
+		}
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
 	public static void main(String[] args) throws IOException {
 		// p_1753();
 		// p_1504();
 		// p_9370();
-		p_11657();
+		// p_11657();
+		p_11404();
 
 		return;
 	}
