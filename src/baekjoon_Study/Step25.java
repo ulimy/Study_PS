@@ -1,11 +1,14 @@
 package baekjoon_Study;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 // 최단경로
 public class Step25 {
@@ -179,9 +182,122 @@ public class Step25 {
 		return dist[end];
 	}
 
-	public static void main(String[] args) {
+	// 미확인 도착지
+	public static void p_9370() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		int testcase = Integer.parseInt(br.readLine());
+
+		StringBuilder result = new StringBuilder();
+
+		while (testcase-- > 0) {
+
+			st = new StringTokenizer(br.readLine(), " ");
+			int n = Integer.parseInt(st.nextToken()); // 교차로 (정점)
+			int m = Integer.parseInt(st.nextToken()); // 도로 (간선)
+			int t = Integer.parseInt(st.nextToken()); // 목적지 후보 개수
+
+			st = new StringTokenizer(br.readLine(), " ");
+			int s = Integer.parseInt(st.nextToken()); // 출발지
+			int g = Integer.parseInt(st.nextToken());
+			int h = Integer.parseInt(st.nextToken());
+
+			// 거리 정보 저장
+			List<Node>[] street = new LinkedList[n + 1];
+			for (int i = 1; i <= n; i++) {
+				street[i] = new LinkedList<>();
+			}
+
+			int gh = 0; // gh 사이의 거리
+
+			for (int i = 0; i < m; i++) {
+
+				st = new StringTokenizer(br.readLine(), " ");
+
+				int x = Integer.parseInt(st.nextToken());
+				int y = Integer.parseInt(st.nextToken());
+				int w = Integer.parseInt(st.nextToken());
+
+				street[x].add(new Node(y, w));
+				street[y].add(new Node(x, w));
+
+				if ((x == g && y == h) || (x == h && y == g)) {
+					gh = w;
+				}
+			}
+
+			// 가능한 도착지
+			List<Integer> list = new LinkedList<>();
+
+			for (int i = 0; i < t; i++) {
+				int dest = Integer.parseInt(br.readLine());
+
+				// s - dest 최단거리
+				int shortest = dijkstra_9370(n, street, s, dest);
+
+				// s - g - h- dest
+				int result1 = 0;
+				result1 += dijkstra_9370(n, street, s, g);
+				result1 += gh;
+				result1 += dijkstra_9370(n, street, h, dest);
+
+				// s - h - g - dest
+				int result2 = 0;
+				result2 += dijkstra_9370(n, street, s, h);
+				result2 += gh;
+				result2 += dijkstra_9370(n, street, g, dest);
+
+				// 둘중 하나라도 최단거리라면 목적지 가능
+				if (result1 == shortest || result2 == shortest) {
+					list.add(dest);
+				}
+			}
+
+			// 결과 담기
+			list.sort((a, b) -> a - b);
+			for (int l : list) {
+				result.append(l + " ");
+			}
+
+			result.append("\n");
+
+		}
+
+		System.out.println(result.toString());
+
+		return;
+
+	}
+
+	public static int dijkstra_9370(int n, List<Node>[] street, int start, int end) {
+
+		PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> a.weight - b.weight);
+		int[] dist = new int[n + 1];
+
+		// 초기화
+		Arrays.fill(dist, 100000000);
+		dist[start] = 0;
+		pq.offer(new Node(start, 0));
+
+		while (!pq.isEmpty()) {
+			Node target = pq.poll();
+
+			for (Node cur : street[target.index]) {
+				if (target.weight + cur.weight < dist[cur.index]) {
+					dist[cur.index] = target.weight + cur.weight;
+					pq.offer(new Node(cur.index, dist[cur.index]));
+				}
+			}
+		}
+
+		return dist[end];
+	}
+
+	public static void main(String[] args) throws IOException {
 		// p_1753();
-		p_1504();
+		// p_1504();
+		p_9370();
 
 		return;
 	}
