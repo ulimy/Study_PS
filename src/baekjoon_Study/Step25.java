@@ -294,10 +294,110 @@ public class Step25 {
 		return dist[end];
 	}
 
+	// 벨만포드 타임머신
+	public static void p_11657() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+		int n = Integer.parseInt(st.nextToken()); // 도시 (정점)
+		int m = Integer.parseInt(st.nextToken()); // 버스노선 (간선)
+
+		List<Node>[] city = new LinkedList[n + 1];
+
+		// city 초기화
+		for (int i = 1; i <= n; i++) {
+			city[i] = new LinkedList<>();
+		}
+
+		for (int i = 0; i < m; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
+			int w = Integer.parseInt(st.nextToken());
+
+			city[x].add(new Node(y, w));
+		}
+
+		StringBuilder result = new StringBuilder();
+		long[] dist = bellmanFord_11687(n, city);
+
+		if (dist == null) {
+			result.append("-1"); // 순환 존재
+		} else {
+			for (int i = 2; i <= n; i++) {
+				if (dist[i] == 100000000) {
+					result.append("-1\n");
+				} else {
+					result.append(dist[i] + "\n");
+				}
+			}
+		}
+
+		System.out.println(result.toString());
+
+	}
+
+	public static long[] bellmanFord_11687(int n, List<Node>[] city) {
+
+		long[] dist = new long[n + 1];
+		Arrays.fill(dist, 100000000);
+		dist[1] = 0;
+
+		// update 되었는지 확인
+		boolean update = false;
+
+		// n-1번 반복
+		for (int i = 0; i < n - 1; i++) {
+
+			update = false;
+
+			// 전제 정첨에 대하여
+			for (int j = 1; j <= n; j++) {
+
+				// 연결된 점들에 대해 최단거리 초기화
+				for (Node node : city[j]) {
+
+					if (dist[j] == 100000000) {
+						break;
+					}
+
+					if (dist[j] + node.weight < dist[node.index]) {
+						dist[node.index] = dist[j] + node.weight;
+						update = true;
+					}
+				}
+			}
+
+			// 더이상 업데이트 없다면 그만해도 됨
+			if (!update) {
+				return dist;
+			}
+
+		}
+
+		// 업데이트가 또 일어나면 음수 사이클 발생
+		if (update) {
+			for (int j = 1; j <= n; j++) {
+				for (Node node : city[j]) {
+					if (dist[j] == 100000000) {
+						break;
+					}
+					if (dist[j] + node.weight < dist[node.index]) {
+						return null; // 발생!!
+					}
+				}
+			}
+
+		}
+
+		return dist;
+	}
+
 	public static void main(String[] args) throws IOException {
 		// p_1753();
 		// p_1504();
-		p_9370();
+		// p_9370();
+		p_11657();
 
 		return;
 	}
