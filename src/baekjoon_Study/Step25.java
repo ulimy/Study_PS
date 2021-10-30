@@ -103,8 +103,85 @@ public class Step25 {
 
 	}
 
+	// 특정한 최단경로
+	public static void p_1504() {
+		Scanner sc = new Scanner(System.in);
+		int v = sc.nextInt(); // 정점 개수
+		int e = sc.nextInt(); // 간선 개수
+		List<Node>[] graph = new LinkedList[v + 1];
+
+		// 그래프 초기화
+		for (int i = 1; i <= v; i++) {
+			graph[i] = new LinkedList<>();
+		}
+
+		// 간선정보 저장
+		for (int i = 0; i < e; i++) {
+			int x = sc.nextInt();
+			int y = sc.nextInt();
+			int w = sc.nextInt();
+
+			graph[x].add(new Node(y, w));
+			graph[y].add(new Node(x, w));
+		}
+
+		int v1 = sc.nextInt();
+		int v2 = sc.nextInt();
+
+		sc.close();
+
+		// 1 -> v1 -> v2 -> v
+		int result1 = 0;
+		result1 += dijkstra_1504(v, graph, 1, v1);
+		result1 += dijkstra_1504(v, graph, v1, v2);
+		result1 += dijkstra_1504(v, graph, v2, v);
+
+		// 1 -> v2 -> v1 -> v
+		int result2 = 0;
+		result2 += dijkstra_1504(v, graph, 1, v2);
+		result2 += dijkstra_1504(v, graph, v2, v1);
+		result2 += dijkstra_1504(v, graph, v1, v);
+
+		System.out.println((result1 >= 100000000 && result2 >= 100000000) ? -1 : Math.min(result1, result2));
+
+		return;
+	}
+
+	public static int dijkstra_1504(int v, List<Node>[] graph, int start, int end) {
+
+		// 간선 재이동 가능하므로 visited 필요 없음!
+
+		// 가중치 오름차순
+		PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> a.weight - b.weight);
+
+		// 최단거리
+		int[] dist = new int[v + 1];
+
+		// 초기화
+		Arrays.fill(dist, 100000000);
+		dist[start] = 0;
+		pq.offer(new Node(start, 0));
+
+		while (!pq.isEmpty()) {
+
+			Node target = pq.poll();
+
+			// 연결되어있는 배열 전부 조사
+			for (Node n : graph[target.index]) {
+				if (target.weight + n.weight < dist[n.index]) {
+					dist[n.index] = target.weight + n.weight;
+					pq.offer(new Node(n.index, dist[n.index]));
+				}
+			}
+
+		}
+
+		return dist[end];
+	}
+
 	public static void main(String[] args) {
-		p_1753();
+		// p_1753();
+		p_1504();
 
 		return;
 	}
