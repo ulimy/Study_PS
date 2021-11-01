@@ -169,9 +169,83 @@ public class Step28 {
 
 	}
 
+	// 트리의 지름 2
+	public static void p_1967() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		int n = Integer.parseInt(br.readLine()); // 노드 개수
+		List<Node>[] tree = new ArrayList[n + 1];
+
+		// tree 초기화
+		for (int i = 1; i <= n; i++) {
+			tree[i] = new ArrayList<>();
+		}
+
+		// 간선 정보 저장
+		for (int i = 0; i < n - 1; i++) {
+			st = new StringTokenizer(br.readLine());
+			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
+			int w = Integer.parseInt(st.nextToken());
+
+			tree[x].add(new Node(y, w));
+			tree[y].add(new Node(x, w));
+		}
+
+		// 1부터 가장 끝점 구하기
+		int[] diameter = bfs_1967(n, tree, 1);
+		int max_index = 1;
+		int max_value = diameter[1];
+		for (int i = 2; i <= n; i++) {
+			if (max_value < diameter[i]) {
+				max_index = i;
+				max_value = diameter[i];
+			}
+		}
+
+		// 끝점으로부터 지름 구하기
+		diameter = bfs_1967(n, tree, max_index);
+		int result = -1;
+		for (int d : diameter) {
+			result = Math.max(d, result);
+		}
+		System.out.println(result);
+
+		return;
+
+	}
+
+	public static int[] bfs_1967(int n, List<Node>[] tree, int start) {
+		int[] diameter = new int[n + 1];
+		boolean[] visited = new boolean[n + 1];
+		Queue<Integer> queue = new LinkedList<>();
+
+		// 초기화
+		queue.offer(start);
+		Arrays.fill(visited, false);
+
+		while (!queue.isEmpty()) {
+			int target = queue.poll();
+			visited[target] = true;
+
+			for (Node connect : tree[target]) {
+				if (!visited[connect.index]) {
+					visited[connect.index] = true;
+					diameter[connect.index] = diameter[target] + connect.weight;
+					queue.offer(connect.index);
+				}
+			}
+		}
+
+		return diameter;
+	}
+
 	public static void main(String[] args) throws IOException {
 		// p_11725();
-		p_1167();
+		// p_1167();
+		p_1967();
+
 		return;
 	}
 
