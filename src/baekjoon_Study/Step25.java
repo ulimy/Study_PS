@@ -478,13 +478,112 @@ public class Step25 {
 		// dist 오름차순, dist 같다면 cost 오름차순
 		@Override
 		public int compareTo(Flight f) {
-			return (this.dist == f.dist) ? this.cost = f.cost : this.dist - f.dist;
+			return (this.dist == f.dist) ? this.cost - f.cost : this.dist - f.dist;
 		}
 
 	}
 
 	public static void p_10217() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
 
+		int testcase = Integer.parseInt(br.readLine());
+		StringBuilder result = new StringBuilder();
+
+		while (testcase-- > 0) {
+			st = new StringTokenizer(br.readLine());
+			int n = Integer.parseInt(st.nextToken()); // 공항 수
+			int m = Integer.parseInt(st.nextToken()); // 지원비용
+			int k = Integer.parseInt(st.nextToken()); // 비행 정보 수
+
+			List<Flight>[] graph = new ArrayList[n + 1];
+
+			// 초기화
+			for (int i = 1; i <= n; i++) {
+				graph[i] = new ArrayList<>();
+			}
+
+			// 비행정보 입력
+			for (int i = 0; i < k; i++) {
+				st = new StringTokenizer(br.readLine());
+				int u = Integer.parseInt(st.nextToken()); // 출발
+				int v = Integer.parseInt(st.nextToken()); // 도착
+				int c = Integer.parseInt(st.nextToken()); // 비용
+				int d = Integer.parseInt(st.nextToken()); // 소요시간
+
+				graph[u].add(new Flight(v, c, d));
+			}
+
+			// 다익스트라
+			int[][] dp = dijkstra_10217(n, m, graph);
+
+			// 최소시간 구하기
+			int min = 100000000;
+			for (int i = 0; i <= m; i++) {
+				min = Math.min(min, dp[n][i]);
+			}
+
+			result.append((min == 100000000) ? "Poor KCM" : min);
+			result.append("\n");
+
+		}
+
+		System.out.println(result.toString());
+
+		return;
+	}
+
+	public static int[][] dijkstra_10217(int n, int m, List<Flight>[] graph) {
+
+		PriorityQueue<Flight> pq = new PriorityQueue<Flight>();
+		int[][] dp = new int[n + 1][m + 1]; // i-i공항까지 j-돈
+
+		for (int i = 1; i <= n; i++) {
+			Arrays.fill(dp[i], 100000000);
+		}
+
+		// 초기화
+		pq.offer(new Flight(1, 0, 0));
+		dp[1][0] = 0; // 1번공항까지 0원으로 0시간만에 감.
+
+		while (!pq.isEmpty()) {
+			Flight cur = pq.poll();
+
+			for (Flight next : graph[cur.index]) {
+
+				int cost = cur.cost + next.cost;
+				int dist = cur.dist + next.dist;
+
+				// 비용 초과라면 패스
+				if (cost > m) {
+					continue;
+				}
+
+				// 같은비용으로 이미 구한 최단시간보다 더 크다면 패스
+				if (dp[next.index][cost] <= dist) {
+					continue;
+				}
+
+				// 현재 구한 비용뿐만 아니라 그 이후비용까지 현재가 더 작다면 넣기
+				// 이후에 더 큰 비용이 나왔을때 continue로 넘어가게 됨
+				for (int i = cost; i <= m; i++) {
+					// 비용이 더 큰데 최단시간은 작을 수 있으므로 꼭 확인!
+					if (dp[next.index][i] > dist) {
+						dp[next.index][i] = dist;
+					}
+				}
+
+				// 현재 넣기
+				dp[next.index][cost] = dist;
+
+				// 큐에 넣기
+				pq.offer(new Flight(next.index, cost, dist));
+
+			}
+
+		}
+
+		return dp;
 	}
 
 	public static void p_1953() throws IOException {
@@ -551,8 +650,8 @@ public class Step25 {
 		// p_9370();
 		// p_11657();
 		// p_11404();
-		// p_10217();
-		p_1953();
+		p_10217();
+		// p_1953();
 		return;
 	}
 
