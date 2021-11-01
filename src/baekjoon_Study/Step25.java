@@ -3,6 +3,7 @@ package baekjoon_Study;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -460,13 +461,98 @@ public class Step25 {
 		return;
 	}
 
+	// KCM
+	public static class Flight implements Comparable<Flight> {
+
+		int index;
+		int cost;
+		int dist;
+
+		public Flight(int index, int cost, int dist) {
+			super();
+			this.index = index;
+			this.cost = cost;
+			this.dist = dist;
+		}
+
+		// dist 오름차순, dist 같다면 cost 오름차순
+		@Override
+		public int compareTo(Flight f) {
+			return (this.dist == f.dist) ? this.cost = f.cost : this.dist - f.dist;
+		}
+
+	}
+
+	public static void p_10217() throws IOException {
+
+	}
+
+	public static void p_1953() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		int v = Integer.parseInt(st.nextToken());
+		int e = Integer.parseInt(st.nextToken());
+
+		int[][] dist = new int[v + 1][v + 1];
+
+		for (int i = 1; i <= v; i++) {
+			Arrays.fill(dist[i], 100000000);
+		}
+
+		for (int i = 1; i <= e; i++) {
+			st = new StringTokenizer(br.readLine());
+			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
+			int d = Integer.parseInt(st.nextToken());
+
+			dist[x][y] = d;
+		}
+
+		dist = floyd(v, dist);
+
+		// i출발 i도착중에 제일 작은 값 구하기
+		int result = 100000000;
+		for (int i = 1; i <= v; i++) {
+			result = Math.min(result, dist[i][i]);
+		}
+
+		System.out.println((result == 100000000) ? -1 : result);
+
+		return;
+	}
+
+	public static int[][] floyd(int v, int[][] dist) {
+
+		// 경유
+		for (int i = 1; i <= v; i++) {
+
+			// 출발
+			for (int j = 1; j <= v; j++) {
+
+				// 도착
+				for (int k = 1; k <= v; k++) {
+
+					// 경유하는게 더 좋다면 바꿔주기
+					if (dist[j][i] + dist[i][k] < dist[j][k]) {
+						dist[j][k] = dist[j][i] + dist[i][k];
+					}
+
+				}
+			}
+		}
+
+		return dist;
+	}
+
 	public static void main(String[] args) throws IOException {
 		// p_1753();
 		// p_1504();
 		// p_9370();
 		// p_11657();
-		p_11404();
-
+		// p_11404();
+		// p_10217();
+		p_1953();
 		return;
 	}
 
