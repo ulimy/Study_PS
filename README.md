@@ -94,6 +94,7 @@
  22\. [우선순위 큐](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step22.java)  
  24\. [DFS와 BFS](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step24.java)  
  25\. [최단경로](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step25.java)  
+ 28\. [트리](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step28.java)  
 
 
  ---
