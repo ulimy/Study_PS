@@ -352,11 +352,78 @@ public class Step28 {
 		return result.toString();
 	}
 
+	// 트리의 순회
+	public static int[] pre; // 전위
+	public static int[] in; // 중위
+	public static int[] post; // 후위
+	public static int pre_index = 0;
+
+	public static void p_2263() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		int n = Integer.parseInt(br.readLine());
+
+		pre = new int[n];
+		in = new int[n];
+		post = new int[n];
+		int[] position = new int[n + 1]; // 인오더에서 position[i] - i노드가 존재하는 위치
+
+		// 인오더 정보 받기
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < n; i++) {
+			in[i] = Integer.parseInt(st.nextToken());
+			position[in[i]] = i;
+		}
+
+		// 포스트오더 정보 받기
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < n; i++) {
+			post[i] = Integer.parseInt(st.nextToken());
+		}
+
+		solve_2263(0, n - 1, 0, n - 1, position, n);
+
+		// 결과 출력
+		StringBuilder result = new StringBuilder();
+		for (int r : pre) {
+			result.append(r + " ");
+		}
+		System.out.println(result.toString());
+
+		return;
+
+	}
+
+	public static void solve_2263(int i_start, int i_end, int p_start, int p_end, int[] position, int n) {
+
+		if (i_start <= i_end && p_start <= p_end && pre_index < n) {
+
+			int root = post[p_end]; // post의 가장 오른쪽은 항상 루트!
+			int root_index = position[root]; // in에서 루트노드의 위치
+			int left_count = root_index - i_start; // left 개수
+
+			// root
+			pre[pre_index++] = root;
+
+			// 왼
+			solve_2263(i_start, root_index - 1, p_start, p_start + left_count - 1, position, n);
+
+			// 오
+			solve_2263(root_index + 1, i_end, p_start + left_count, p_end - 1, position, n);
+
+		}
+
+		return;
+
+	}
+
 	public static void main(String[] args) throws IOException {
 		// p_11725();
 		// p_1167();
 		// p_1967();
-		p_1991();
+		// p_1991();
+		p_2263();
 
 		return;
 	}
