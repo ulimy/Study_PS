@@ -241,10 +241,122 @@ public class Step28 {
 		return diameter;
 	}
 
+	// 트리 순회
+	public static class TreeNode {
+		int index;
+		TreeNode left;
+		TreeNode right;
+
+		public TreeNode(int index) {
+			super();
+			this.index = index;
+		}
+
+	}
+
+	public static TreeNode[] tree;
+
+	public static void p_1991() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		int n = Integer.parseInt(br.readLine());
+
+		// 트리 초기화
+		tree = new TreeNode[n];
+
+		for (int i = 0; i < n; i++) {
+			tree[i] = new TreeNode(i);
+		}
+
+		for (int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+
+			// 알파벳 순서이므로 'A'만큼 빼면 위치가 나옴!
+			int data = st.nextToken().charAt(0) - 'A';
+			int left = st.nextToken().charAt(0) - 'A';
+			int right = st.nextToken().charAt(0) - 'A';
+
+			if (left >= 0) {
+				tree[data].left = tree[left];
+			}
+
+			if (right >= 0) {
+				tree[data].right = tree[right];
+			}
+		}
+
+		System.out.println(preOrder(0));
+		System.out.println(inOrder(0));
+		System.out.println(postOrder(0));
+
+	}
+
+	// 전위
+	public static String preOrder(int cur) {
+		StringBuilder result = new StringBuilder();
+
+		// root
+		result.append((char) (cur + 'A'));
+
+		// 왼
+		if (tree[cur].left != null) {
+			result.append(preOrder(tree[cur].left.index));
+		}
+
+		// 오
+		if (tree[cur].right != null) {
+			result.append(preOrder(tree[cur].right.index));
+		}
+
+		return result.toString();
+	}
+
+	// 중위
+	public static String inOrder(int cur) {
+		StringBuilder result = new StringBuilder();
+
+		// 왼
+		if (tree[cur].left != null) {
+			result.append(inOrder(tree[cur].left.index));
+		}
+
+		// root
+		result.append((char) (cur + 'A'));
+
+		// 오
+		if (tree[cur].right != null) {
+			result.append(inOrder(tree[cur].right.index));
+		}
+
+		return result.toString();
+	}
+
+	// 후위
+	public static String postOrder(int cur) {
+		StringBuilder result = new StringBuilder();
+
+		// 왼
+		if (tree[cur].left != null) {
+			result.append(postOrder(tree[cur].left.index));
+		}
+
+		// 오
+		if (tree[cur].right != null) {
+			result.append(postOrder(tree[cur].right.index));
+		}
+
+		// root
+		result.append((char) (cur + 'A'));
+
+		return result.toString();
+	}
+
 	public static void main(String[] args) throws IOException {
 		// p_11725();
 		// p_1167();
-		p_1967();
+		// p_1967();
+		p_1991();
 
 		return;
 	}
