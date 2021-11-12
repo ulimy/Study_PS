@@ -1,6 +1,10 @@
 package programmers_HighScoreKit;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Hash {
 
@@ -35,8 +39,28 @@ public class Hash {
 		return true;
 	}
 
-	public static void main(String[] args) {
+	// 위장
+	public static int Camouflage(String[][] clothes) {
+		int result = 1;
 
+		Map<String, Set<String>> map = new HashMap<>();
+
+		for (String[] input : clothes) {
+			Set<String> target = map.getOrDefault(input[1], new HashSet<String>());
+			target.add(input[0]);
+			map.put(input[1], target);
+		}
+
+		for (Set<String> target : map.values()) {
+			result *= (target.size() + 1); // 쓰거나 안쓰거나 - n+1가지 경우
+		}
+
+		result--; // 전부 다 안쓰는 경우 제외
+
+		return result;
+	}
+
+	public static void main(String[] args) {
 		return;
 	}
 
