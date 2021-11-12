@@ -1,8 +1,12 @@
 package programmers_HighScoreKit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -60,7 +64,58 @@ public class Hash {
 		return result;
 	}
 
+	public static int[] BestAlbum(String[] genres, int[] plays) {
+
+		// 결과
+		List<Integer> result = new ArrayList<>();
+
+		// < 장르 , 전체 재생 횟수 >
+		Map<String, Integer> count = new HashMap<>();
+
+		// < 장르 , [고유번호, 재생횟수] >
+		Map<String, List<int[]>> map = new HashMap<>();
+
+		for (int i = 0; i < genres.length; i++) {
+			// count 추가
+			count.put(genres[i], count.getOrDefault(genres[i], 0) + plays[i]);
+
+			// map 추가
+			List<int[]> target = map.getOrDefault(genres[i], new ArrayList<>());
+			target.add(new int[] { i, plays[i] });
+			map.put(genres[i], target);
+		}
+
+		// 장르만 뽑아서 재생 횟수 내림차순으로 정렬
+		List<String> keys = new ArrayList<>(count.keySet());
+		Collections.sort(keys, (a, b) -> count.get(b) - count.get(a));
+
+		for (String key : keys) {
+
+			List<int[]> target = map.get(key);
+
+			// 재생순서 내림차순, 같다면 고유번호 오름차순
+			Collections.sort(target, new Comparator<int[]>() {
+				@Override
+				public int compare(int[] a, int[] b) {
+					return (a[1] == b[1]) ? a[0] - b[0] : b[1] - a[1];
+				}
+			});
+
+			// 2개만 추가
+			for (int i = 0; i < 2 && i < target.size(); i++) {
+				result.add(target.get(i)[0]);
+			}
+
+		}
+
+		return result.stream().mapToInt(i -> i).toArray();
+
+	}
+
 	public static void main(String[] args) {
+		String[] s = { "classic", "pop", "classic", "classic", "pop" };
+		int[] i = { 500, 600, 150, 800, 2500 };
+		BestAlbum(s, i);
 		return;
 	}
 
