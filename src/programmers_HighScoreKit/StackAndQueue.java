@@ -1,7 +1,9 @@
 package programmers_HighScoreKit;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class StackAndQueue {
 
@@ -9,26 +11,29 @@ public class StackAndQueue {
 	public static int[] DevelopFunction(int[] progresses, int[] speeds) {
 
 		List<Integer> result = new ArrayList<>();
+		Queue<Integer> queue = new LinkedList<>();
 
-		// 남은 작업들 중에 우선순위가 제일 높은 인덱스
-		int index = 0;
+		for (int i = 0; i < progresses.length; i++) {
+			queue.offer(i);
+		}
 
-		while (index < progresses.length) {
-			int count = 0; // 배포 기능 개수
+		while (!queue.isEmpty()) {
 
-			// 우선순위가 가장 높은 기능개발을 위해 필요한 시간 , 나누어 떨어지지 않는다면 하루 더 추가
-			int days = (100 - progresses[index]) / speeds[index];
-			days += ((100 - progresses[index]) % speeds[index] == 0) ? 0 : 1;
+			int index = queue.poll();
+			int count = 1;
 
-			// 기능 개발 실행
-			for (int i = index; i < progresses.length; i++) {
-				progresses[i] += speeds[i] * days;
+			// 필요한 시간 계산
+			int days = (int) Math.ceil((100 - progresses[index]) / speeds[index]);
+
+			// 계산한 시간만큼 나머지 기능도 개발
+			for (int i = index + 1; i < progresses.length; i++) {
+				progresses[i] += (speeds[i] * days);
 			}
 
-			// 100 이상이면 배포
-			while (index < progresses.length && progresses[index] >= 100) {
+			// 완료된 기능들 배포
+			while (!queue.isEmpty() && progresses[queue.peek()] >= 100) {
 				count++;
-				index++;
+				queue.poll();
 			}
 
 			result.add(count);
@@ -38,7 +43,7 @@ public class StackAndQueue {
 	}
 
 	public static void main(String[] args) {
-
+		DevelopFunction(new int[] { 95, 90, 99, 99, 80, 99 }, new int[] { 1, 1, 1, 1, 1, 1 });
 	}
 
 }
