@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Stack;
 
 public class StackAndQueue {
 
@@ -127,8 +128,34 @@ public class StackAndQueue {
 		return result;
 	}
 
+	// 주식 가격
+	public int[] stockPrice(int[] prices) {
+
+		Stack<Integer> stack = new Stack<>();
+		int[] result = new int[prices.length];
+
+		for (int i = 0; i < prices.length; i++) {
+
+			// 감소했다면 감소된 모든 인덱스 뽑기
+			while (!stack.isEmpty() && prices[stack.peek()] > prices[i]) {
+				int index = stack.pop();
+				result[index] = i - index;
+			}
+
+			stack.push(i);
+		}
+
+		// 스택에 값이 남아있다면 끝까지 가격이 떨어지지 않음
+		while (!stack.isEmpty()) {
+			int index = stack.pop();
+			result[index] = prices.length - index;
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
-		crossBridge(100, 100, new int[] { 10 });
+
 	}
 
 }
