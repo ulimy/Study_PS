@@ -43,9 +43,10 @@ public class StackAndQueue {
 		return result.stream().mapToInt(i -> i).toArray();
 	}
 
+	// 프린터
 	public static int printer(int[] priorities, int location) {
 
-		// 프린터 대기 int[] {location, proterties}
+		// 프린터 대기 int[] {location, properties}
 		Queue<int[]> queue = new LinkedList<>();
 
 		// 내림차순 중요도 저장
@@ -77,8 +78,57 @@ public class StackAndQueue {
 		return result;
 	}
 
-	public static void main(String[] args) {
+	// 다리를 지나는 트럭
+	public static int crossBridge(int bridge_length, int weight, int[] truck_weights) {
 
+		Queue<Integer> bridge = new LinkedList<>();
+
+		int w = 0; // 현재 다리위에 있는 트럭들의 총 무게
+		int result = 0;
+
+		for (int tw : truck_weights) {
+
+			while (true) {
+
+				// 다리가 비어있는 경우
+				if (bridge.isEmpty()) {
+					result++;
+					bridge.add(tw);
+					w += tw;
+					break;
+				}
+
+				// 다리 끝에 도착
+				else if (bridge.size() == bridge_length) {
+					w -= bridge.poll();
+				}
+
+				// 다리가 비어있지 않은 경우
+				else {
+					result++;
+					// 올라설 수 있다면 올라서기
+					if (w + tw <= weight) {
+						bridge.add(tw);
+						w += tw;
+						break;
+					}
+					// 올라설 수 없다면 한칸 이동
+					else {
+						bridge.add(0);
+					}
+				}
+
+			}
+		}
+
+		// 마지막 트럭 건너기
+		result += bridge_length;
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+		crossBridge(100, 100, new int[] { 10 });
 	}
 
 }

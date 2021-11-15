@@ -185,3 +185,4 @@
   - [스택/큐](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/StackAndQueue.java)
     * 기능개발
     * 프린터
+    * 다리를 지나는 트럭
