@@ -68,8 +68,45 @@ public class Heap {
 		return result / jobs.length;
 	}
 
+	public static int[] dualPriorityQueue(String[] operations) {
+
+		PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+		PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+
+		for (String o : operations) {
+
+			int num = Integer.parseInt(o.substring(2));
+
+			// 삽입
+			if (o.charAt(0) == 'I') {
+				minHeap.offer(num);
+				maxHeap.offer(num);
+			} else {
+
+				// 빈 큐 확인
+				if (minHeap.isEmpty()) {
+					continue;
+				}
+
+				// 최댓값 삭제
+				if (num == 1) {
+					int target = maxHeap.poll();
+					minHeap.remove(target);
+				}
+				// 최솟값 삭제
+				else {
+					int target = minHeap.poll();
+					maxHeap.remove(target);
+				}
+			}
+		}
+
+		return (minHeap.isEmpty()) ? new int[] { 0, 0 } : new int[] { maxHeap.poll(), minHeap.poll() };
+
+	}
+
 	public static void main(String[] args) {
-		diskController(new int[][] { { 0, 3 }, { 1, 9 }, { 2, 6 } });
+		dualPriorityQueue(new String[] { "I 16", "D 1" });
 	}
 
 }
