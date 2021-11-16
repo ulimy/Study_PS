@@ -1,5 +1,6 @@
 package programmers_HighScoreKit;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Heap {
@@ -28,8 +29,47 @@ public class Heap {
 		return result;
 	}
 
-	public static void main(String[] args) {
+	// 디스크 컨트롤러
+	public static int diskController(int[][] jobs) {
 
+		// 요청시간 오름차순 정렬
+		Arrays.sort(jobs, (a, b) -> a[0] - b[0]);
+
+		// 현재 시간으로부터 시작 가능한 작업들을 소요시간 오름차순으로 정렬
+		// int[] { 요청시간, 소요시간 }
+		PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+
+		int index = 0; // pq에 들어갈 jobs index
+		int cur = 0; // 현재 시간
+		int count = 0; // 완료된 작업의 개수
+		int result = 0; // 결과
+
+		while (count < jobs.length) {
+
+			// 시작 가능한 작업 전부 큐에 넣기
+			while (index < jobs.length && jobs[index][0] <= cur) {
+				pq.offer(jobs[index]);
+				index++;
+			}
+
+			// 큐가 비어있다면 이전 작업 완료시점과 새로운 작업 요청 시점에 차이 발생
+			if (pq.isEmpty()) {
+				cur = jobs[index][0];
+			}
+			// 아니라면 시작 가능한 작업 존재하므로 작업하기
+			else {
+				int[] job = pq.poll();
+				cur += job[1];
+				result += (cur - job[0]);
+				count++;
+			}
+		}
+
+		return result / jobs.length;
+	}
+
+	public static void main(String[] args) {
+		diskController(new int[][] { { 0, 3 }, { 1, 9 }, { 2, 6 } });
 	}
 
 }
