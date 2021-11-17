@@ -1,8 +1,8 @@
 # Study_PS 
-## PS 공부하기
+## PS 공부하기🔥
 
 ---
-### [lecture](https://www.inflearn.com/course/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%B0%94/dashboard)
+### [❤️ 인프런 강의](https://www.inflearn.com/course/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%B0%94/dashboard)
 
 1. String & Array
  - [MeetingRoom](https://github.com/ulimy/Study_PS/blob/master/src/lecture_StringAndArray/MeetingRoom_0105.java)
@@ -63,7 +63,8 @@
  - [LetterCombinationsOfPhonenumber](https://github.com/ulimy/Study_PS/blob/master/src/lecture_BackTracking/LetterCombinationsOfPhonenumber_0204.java)
 
  ---
- ### 정렬
+
+ ### 🧡 정렬 구현해보기
  1. [선택정렬(Selection Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/SelectionSort.java)
  2. [삽입정렬(Insertion Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/InsertionSort.java)
  3. [버블정렬(Bubble Sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/BubbleSort.java)
@@ -72,7 +73,7 @@
  6. [퀵 정렬(Quick sort)](https://github.com/ulimy/Study_PS/blob/master/src/study_Sort/QuickSort.java)
 
  ---
- ### [BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
+ ### [💛 BAEKJOON 단계별로 풀어보기](https://www.acmicpc.net/step)
 
  1\. [입출력과 사칙연산](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step1.java)  
  2\. [if문](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step2.java)  
@@ -96,37 +97,59 @@
  25\. [최단경로](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step25.java)  
  28\. [트리](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Study/Step28.java)  
 
-
  ---
- ### [BAEKJOON online judge](https://www.acmicpc.net/)
+ ### [💚 Programmers 고득점 Kit](https://programmers.co.kr/learn/challenges)
+
+  - [해시](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Hash.java)
+    * 완주하지 못한 선수
+    * 전화번호 목록
+    * 위장
+    * 베스트 앨범
+
+  - [스택/큐](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/StackAndQueue.java)
+    * 기능개발
+    * 프린터
+    * 다리를 지나는 트럭
+    * 주식가격
+
+  - [힙](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Heap.java)
+    * 더 맵게
+    * 디스크 컨트롤러
+    * 이중우선순위큐
+
+---
+### 💙
+
+---
+### 💜 BAEKJOON
 
  1. DynamicProgramming
   - 1로 만들기
-  	* [problem](https://www.acmicpc.net/problem/1463)
+    * [problem](https://www.acmicpc.net/problem/1463)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_1463.java) 
   - 2Xn 타일링
-  	* [problem](https://www.acmicpc.net/problem/11726)
+    * [problem](https://www.acmicpc.net/problem/11726)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11726.java) 
   - 2Xn 타일링 2
-  	* [problem](https://www.acmicpc.net/problem/11727)
+    * [problem](https://www.acmicpc.net/problem/11727)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11727.java) 
   - 1,2,3 더하기
-  	* [problem](https://www.acmicpc.net/problem/9095)
+    * [problem](https://www.acmicpc.net/problem/9095)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_9095.java) 
   - 쉬운 계단 수
-  	* [problem](https://www.acmicpc.net/problem/10844)
+    * [problem](https://www.acmicpc.net/problem/10844)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_10844.java) 
   - 오르막 수
-  	* [problem](https://www.acmicpc.net/problem/11057)
+    * [problem](https://www.acmicpc.net/problem/11057)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_11057.java) 
   - 이친수
-  	* [problem](https://www.acmicpc.net/problem/2193)
+    * [problem](https://www.acmicpc.net/problem/2193)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2193.java) 
   - 스티커
-  	* [problem](https://www.acmicpc.net/problem/9465)
+    * [problem](https://www.acmicpc.net/problem/9465)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_9465.java) 
   - 포도주 시식
-  	* [problem](https://www.acmicpc.net/problem/2156)
+    * [problem](https://www.acmicpc.net/problem/2156)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2156.java) 
   - 가장 긴 증가하는 부분 수열
     * [problem](https://www.acmicpc.net/problem/11053)
@@ -153,7 +176,7 @@
     * [problem](https://www.acmicpc.net/problem/2133)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_DynamicProgramming/boj_2133.java) 
 
-=======
+====
     
  2. Problems
   - 수 정렬하기 2
@@ -171,24 +194,3 @@
   - 국영수 
     * [problem](https://www.acmicpc.net/problem/10825)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/baekjoon_Problems/boj_10825.java) 
-    
-
- ---
- ### [Programmers 고득점 Kit](https://programmers.co.kr/learn/challenges)
-
-  - [해시](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Hash.java)
-    * 완주하지 못한 선수
-    * 전화번호 목록
-    * 위장
-    * 베스트 앨범
-
-  - [스택/큐](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/StackAndQueue.java)
-    * 기능개발
-    * 프린터
-    * 다리를 지나는 트럭
-    * 주식가격
-
-  - [힙](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Heap.java)
-    * 더 맵게
-    * 디스크 컨트롤러
-    * 이중우선순위큐
