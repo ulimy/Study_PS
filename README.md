@@ -124,7 +124,8 @@
 
   - [완전탐색](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/BruteForce.java)
     * 모의고사
-    * 소수 찾기 
+    * 소수 찾기
+    * 카펫 
 
 ---
 ### 💙

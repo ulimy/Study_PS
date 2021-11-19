@@ -150,8 +150,30 @@ public class BruteForce {
 		for (int i = 0; i < n; i++) {
 			permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, n), set);
 		}
-		
+
 		return;
+	}
+
+	// 카펫
+	public static int[] carpet(int brown, int yellow) {
+
+		int area = brown + yellow;
+
+		// 약수의 쌍 구하기
+		List<int[]> candidates = new ArrayList<>();
+		for (int i = 1; i <= Math.sqrt(area); i++) {
+			if (area % i == 0) {
+				candidates.add(new int[] { area / i, i });
+			}
+		}
+
+		for (int[] candidate : candidates) {
+			if ((candidate[0] - 2) * (candidate[1] - 2) == yellow) {
+				return candidate;
+			}
+		}
+
+		return null;
 	}
 
 	public static void main(String[] args) {
