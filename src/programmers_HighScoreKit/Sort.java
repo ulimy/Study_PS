@@ -47,8 +47,26 @@ public class Sort {
 		return result.toString();
 	}
 
+	// H-Index
+	public static int h_index(int[] citations) {
+		int result = 0;
+		Arrays.sort(citations);
+
+		for (int i = 0; i < citations.length; i++) {
+			int h = citations[i];
+			int k = citations.length - i; // h번 이상 인용된 논문
+
+			if (k <= h) {
+				result = k;
+				break;
+			}
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
-		biggestNumber(new int[] { 3, 30, 34, 5, 9 });
+		h_index(new int[] { 3, 0, 6, 1, 5 });
 
 	}
 

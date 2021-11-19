@@ -120,6 +120,7 @@
   - [정렬](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Sort.java)
     * K번째 수
     * 가장 큰 수
+    * H-Index
 
 ---
 ### 💙
