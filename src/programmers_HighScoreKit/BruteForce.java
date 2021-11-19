@@ -1,8 +1,10 @@
 package programmers_HighScoreKit;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +75,7 @@ public class BruteForce {
 		three.offer(4);
 		three.offer(5);
 		three.offer(5);
-		
+
 		return;
 	}
 
@@ -98,12 +100,62 @@ public class BruteForce {
 		one.offer(o);
 		two.offer(t);
 		three.offer(th);
+
+		return;
+	}
+
+	// 소수 찾기
+	public static int findDecimal(String numbers) {
+
+		// 소수 구해놓기
+		int max = (int) Math.pow(10, numbers.length());
+		boolean[] decimal = new boolean[max];
+		Arrays.fill(decimal, true);
+
+		decimal[0] = false;
+		decimal[1] = false;
+
+		for (int i = 2; i <= Math.sqrt(max); i++) {
+			if (decimal[i]) {
+				for (int j = i * 2; j < max; j += i) {
+					decimal[j] = false;
+				}
+			}
+		}
+
+		int result = 0;
+
+		// 숫자 뽑기
+		HashSet<Integer> set = new HashSet<>();
+		permutation("", numbers, set);
+
+		for (Integer i : set) {
+			System.out.println(i);
+			if (decimal[i]) {
+				result++;
+			}
+		}
+
+		System.out.println(result);
+
+		return result;
+	}
+
+	// 순열
+	public static void permutation(String prefix, String str, HashSet<Integer> set) {
+		int n = str.length();
+		if (!prefix.equals("")) {
+			set.add(Integer.valueOf(prefix)); // 스트링을 Interger로 변환
+		}
+		for (int i = 0; i < n; i++) {
+			permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, n), set);
+		}
 		
 		return;
 	}
 
 	public static void main(String[] args) {
-		mockExam(new int[] { 1, 3, 2, 4, 2 });
+		findDecimal("011");
 
 	}
 
