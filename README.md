@@ -122,6 +122,9 @@
     * 가장 큰 수
     * H-Index
 
+  - [완전탐색](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/BruteForce.java)
+    * 모의고사 
+
 ---
 ### 💙
 
