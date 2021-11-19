@@ -1,6 +1,7 @@
 package programmers_HighScoreKit;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Sort {
 
@@ -17,8 +18,37 @@ public class Sort {
 		return result;
 	}
 
+	// 가장 큰 수
+	public static String biggestNumber(int[] numbers) {
+		StringBuilder result = new StringBuilder();
+
+		// 비교를 위해 String으로 바꾸기
+		String[] nums = new String[numbers.length];
+		for (int i = 0; i < numbers.length; i++) {
+			nums[i] = String.valueOf(numbers[i]);
+		}
+
+		Arrays.sort(nums, new Comparator<String>() {
+			@Override
+			public int compare(String a, String b) {
+				return (b + a).compareTo((a + b));
+			}
+		});
+
+		// 배열에 0만 여러개 있는 경우
+		if (nums[0].equals("0")) {
+			return "0";
+		}
+
+		for (String num : nums) {
+			result.append(num);
+		}
+
+		return result.toString();
+	}
+
 	public static void main(String[] args) {
-		kthNumber(new int[] { 1, 5, 2, 6, 3, 7, 4 }, new int[][] { { 2, 5, 3 }, { 4, 4, 1 }, { 1, 7, 3 } });
+		biggestNumber(new int[] { 3, 30, 34, 5, 9 });
 
 	}
 
