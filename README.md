@@ -130,6 +130,7 @@
   - [탐욕법](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Greedy.java)
     * 체육복
     * 조이스틱
+    * 큰 수 만들기
 
 ---
 ### 💙

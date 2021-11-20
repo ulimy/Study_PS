@@ -1,6 +1,7 @@
 package programmers_HighScoreKit;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Greedy {
 
@@ -73,11 +74,33 @@ public class Greedy {
 		answer += move;
 
 		return answer;
-		
+
+	}
+
+	// 큰 수 만들기
+	public static String makeBigNumber(String number, int k) {
+		char[] result = new char[number.length() - k];
+		Stack<Character> stack = new Stack<>();
+
+		for (int i = 0; i < number.length(); i++) {
+
+			// 뒤에 오는 값보다 작으면 빼기
+			while (!stack.isEmpty() && stack.peek() < number.charAt(i) && k-- > 0) {
+				stack.pop();
+			}
+
+			stack.push(number.charAt(i));
+		}
+
+		for (int i = 0; i < result.length; i++) {
+			result[i] = stack.get(i);
+		}
+
+		return String.valueOf(result);
 	}
 
 	public static void main(String[] args) {
-
+		makeBigNumber("1924", 2);
 	}
 
 }
