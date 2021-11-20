@@ -99,8 +99,36 @@ public class Greedy {
 		return String.valueOf(result);
 	}
 
+	// 구명보트
+	public static int lifeboat(int[] people, int limit) {
+		int result = 0;
+
+		Arrays.sort(people);
+		int front = 0;
+		int back = people.length - 1;
+
+		// 무게 제일 작은 사람이 무게 제일 큰 사람과 함께 타야함
+		while (front < back) {
+			if (people[front] + people[back] <= limit) {
+				result++;
+				people[front++] = -1;
+				people[back--] = -1;
+			} else {
+				back--;
+			}
+		}
+
+		for (int p : people) {
+			if (p > 0) {
+				result++;
+			}
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
-		makeBigNumber("1924", 2);
+		lifeboat(new int[] { 70, 50, 80 }, 100);
 	}
 
 }
