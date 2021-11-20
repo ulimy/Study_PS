@@ -127,6 +127,9 @@
     * 소수 찾기
     * 카펫 
 
+  - [탐욕법](https://github.com/ulimy/Study_PS/blob/master/src/programmers_HighScoreKit/Greedy.java)
+    * 체육복
+
 ---
 ### 💙
 
