@@ -50,6 +50,32 @@ public class Greedy {
 		return result;
 	}
 
+	// 조이스틱
+	public static int joyStick(String name) {
+		int answer = 0;
+		int move = name.length() - 1; // 좌우이동하는 max값
+
+		for (int i = 0; i < name.length(); i++) {
+			// 상하 이동
+			answer += Math.min('Z' - name.charAt(i) + 1, name.charAt(i) - 'A');
+
+			// 다음글자가 A일 경우
+			int next = i + 1;
+			while (next < name.length() && name.charAt(next) == 'A') {
+				next++;
+			}
+			// move : 그냥 일직선으로 가기
+			// 0~i~0 : i+i
+			// 뒤돌아서 i까지 가기 : name.length()-next
+			move = Math.min(move, (i + i) + name.length() - next);
+		}
+
+		answer += move;
+
+		return answer;
+		
+	}
+
 	public static void main(String[] args) {
 
 	}
