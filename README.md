@@ -142,6 +142,9 @@
   - 오픈 채팅방
     * [problem](https://programmers.co.kr/learn/courses/30/lessons/42888)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/OpenChatRoom.java)
+  - 카카오프렌즈 컬러링북
+    * [problem](https://programmers.co.kr/learn/courses/30/lessons/1829)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/ColoringBook.java)
 
 ---
 ### 💜 BAEKJOON
