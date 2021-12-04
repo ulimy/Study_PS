@@ -139,6 +139,9 @@
   - 문자열 압축
     * [problem](https://programmers.co.kr/learn/courses/30/lessons/60057)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/StringCompression.java)
+  - 오픈 채팅방
+    * [problem](https://programmers.co.kr/learn/courses/30/lessons/42888)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/OpenChatRoom.java)
 
 ---
 ### 💜 BAEKJOON
