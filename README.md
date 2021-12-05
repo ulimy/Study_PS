@@ -148,9 +148,12 @@
   - 단체사진 찍기
     * [problem](https://programmers.co.kr/learn/courses/30/lessons/1835)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/GroupPhoto.java)
-  - 멀쩡한 사각ㄱ
+  - 멀쩡한 사각형
     * [problem](https://programmers.co.kr/learn/courses/30/lessons/62048)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/PlainSquare.java)
+  - 124나라의 숫자
+    * [problem](https://programmers.co.kr/learn/courses/30/lessons/12899)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/Country_124.java)
 
 ---
 ### 💜 BAEKJOON
