@@ -145,6 +145,9 @@
   - 카카오프렌즈 컬러링북
     * [problem](https://programmers.co.kr/learn/courses/30/lessons/1829)
     * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/ColoringBook.java)
+  - 단체사진 찍기
+    * [problem](https://programmers.co.kr/learn/courses/30/lessons/1835)
+    * [solve](https://github.com/ulimy/Study_PS/blob/master/src/programmers_Level_2/GroupPhoto.java)
 
 ---
 ### 💜 BAEKJOON
